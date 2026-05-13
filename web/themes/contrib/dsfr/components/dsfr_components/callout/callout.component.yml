@@ -1,0 +1,47 @@
+name: DSFR - Callout
+description: DSFR callout component
+status: experimental
+group: DSFR
+slots:
+  title:
+    title: 'Title'
+  description:
+    title: 'Text'
+  button:
+    title: 'Button or link'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+    title_tag:
+      type: string
+      title: "HTML title tag"
+      enum:
+        - p
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+    description_tag:
+      type: string
+      title: "HTML description tag"
+      enum:
+        - p
+        - h3
+        - h4
+        - h5
+        - h6
+        - div
+    color:
+      type: string
+      title: "Color"
+      description: "DSFR color scheme"
+    icon:
+      type: string
+      title: Icon
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.callout

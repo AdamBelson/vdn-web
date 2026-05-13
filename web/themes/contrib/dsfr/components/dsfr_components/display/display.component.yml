@@ -1,0 +1,10 @@
+name: DSFR - Display
+description: DSFR display component (modal)
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties: {}
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.display

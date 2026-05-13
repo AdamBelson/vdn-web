@@ -1,0 +1,21 @@
+{% set attributes = attributes.addClass('fr-badge') %}
+{% if variant and variant != 'default' %}
+  {% set variants = variant|split('--')|map(v => v|replace({(v): 'fr-badge--' ~ ((v == 'status') ? 'success' : v)})) %}
+  {% set attributes = attributes.addClass(variants) %}
+{% endif %}
+
+{% if no_icon %}
+  {% set attributes = attributes.addClass('fr-badge--no-icon') %}
+{% else %}
+  {{ attach_library('dsfr/lib.utility') }}
+{% endif %}
+
+<{{ html_tag }}{{ attributes.addClass('fr-badge') }}>
+  {% if ellipsis %}
+  <span class="fr-ellipsis">
+  {% endif %}
+    {{ label }}
+    {% if ellipsis %}
+    </span>
+  {% endif %}
+</{{ html_tag }}>

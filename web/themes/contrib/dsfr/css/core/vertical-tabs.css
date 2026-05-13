@@ -1,0 +1,4 @@
+.vertical-tabs__pane .fr-input,
+.vertical-tabs__pane .fr-select {
+  box-sizing: border-box;
+}

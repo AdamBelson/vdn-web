@@ -1,0 +1,31 @@
+{% set html_id = html_id|default('fr-link--' ~ random()) %}
+{% set attributes = create_attribute({
+  class: ['fr-link'],
+  href: href,
+}) %}
+{% set attributes = attributes.setAttribute('id', html_id) %}
+
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass('fr-link--' ~ variant) %}
+{% endif %}
+{% if external %}
+  {% set attributes = attributes.setAttribute('rel', 'noopener external').setAttribute('target', '_blank') %}
+{% endif %}
+{% if icon %}
+  {% set attributes = attributes.addClass(icon) %}
+{% endif %}
+{% if icon_position %}
+  {% set attributes = attributes.addClass('fr-link--icon-' ~ icon_position) %}
+{% endif %}
+{% if assess_file %}
+  {% set attributes = attributes.setAttribute('data-fr-assess-file', '') %}
+{% endif %}
+{% if download %}
+  {% set attributes = attributes.setAttribute('download', 'true') %}
+{% endif %}
+<a{{ attributes }}>
+  {{ label }}
+  {% if detail and detail != '' %}
+  <span class="fr-link__detail">{{ detail }}</span>
+  {% endif %}
+</a>

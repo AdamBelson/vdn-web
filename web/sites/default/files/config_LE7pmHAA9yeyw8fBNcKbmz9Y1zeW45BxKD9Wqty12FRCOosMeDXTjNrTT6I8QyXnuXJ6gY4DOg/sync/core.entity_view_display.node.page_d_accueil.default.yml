@@ -1,0 +1,29 @@
+uuid: b2b7cb12-4011-4d5e-90fb-67eed370b45d
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.field.node.page_d_accueil.body
+    - node.type.page_d_accueil
+  module:
+    - text
+    - user
+id: node.page_d_accueil.default
+targetEntityType: node
+bundle: page_d_accueil
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

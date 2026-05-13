@@ -1,0 +1,14 @@
+{% set html_id = html_id|default('fr-link-group--' ~ random()) %}
+{% set attributes = create_attribute({class: 'fr-links-group', id: html_id}) %}
+
+{% set links = links and links is not sequence ? [links] : links %}
+
+{% if links %}
+<ul {{ attributes }}>
+  {% for link in links %}
+    <li>
+      {{ link }}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

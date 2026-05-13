@@ -1,0 +1,27 @@
+name: DSFR - Logo
+description: DSFR logo component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    size:
+      type: string
+      title: Size
+      default: default
+      enum:
+        - default
+        - sm
+        - lg
+    label:
+      type: string
+      title: 'Logo label'
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.logo

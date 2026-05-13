@@ -1,0 +1,26 @@
+name: DSFR - Upload
+description: DSFR upload component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: HTML identifier
+    label:
+      type: string
+      title: Label
+    hint:
+      type: string
+      title: Hint
+  required:
+    - label
+slot:
+  hints:
+    title: Hints
+  errors:
+    title: Errors
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.upload

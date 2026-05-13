@@ -1,0 +1,26 @@
+{% set attributes = create_attribute(attributes).addClass('fr-btn') %}
+{% set type = type|default('button') %}
+{% set attributes = attributes.setAttribute('type', type) %}
+
+{% if icon %}
+  {% set attributes = attributes.addClass(icon.icon) %}
+  {% if icon.position %}
+    {% set attributes = attributes.addClass('fr-btn--icon-' ~ icon_position) %}
+  {% endif %}
+{% endif %}
+
+{% if classes %}
+  {% set attributes = attributes.addClass(classes) %}
+{% endif %}
+
+{% if title %}
+  {% set attributes = attributes.setAttribute('title', title) %}
+{% endif %}
+{% set attributes = attributes.setAttribute('onclick', onclick) %}
+{% if onclick %}
+
+{% endif %}
+
+<button{{ attributes }}>
+  {{ label }}
+</button>

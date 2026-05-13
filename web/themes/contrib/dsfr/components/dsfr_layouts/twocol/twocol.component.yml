@@ -1,0 +1,55 @@
+name: DSFR - Twocols
+description: DSFR/Drupal twocols component
+status: experimental
+group: DSFR - layouts
+variants:
+  50-50:
+    title: 50-50
+  25-75:
+    title: 25-75
+  33-66:
+    title: 33-66
+  40-60:
+    title: 40-60
+  60-40:
+    title: 40-60
+  66-33:
+    title: 66-33
+  75-25:
+    title: 75-25
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    fluid:
+      type: boolean
+      title: 'Fluid'
+    gutters:
+      type: boolean
+      title: 'Gutters'
+    align:
+      type: string
+      title: Horizontal align
+      enum:
+        - fr-grid-row--left
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+    valign:
+      type: string
+      title: Vertical align
+      enum:
+        - fr-grid-row--top
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+slots:
+  first:
+    title: First column
+  second:
+    title: Second column
+  third:
+    title: Third column
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.core

@@ -1,0 +1,36 @@
+name: DSFR - Onecol
+description: DSFR/Drupal onecol component
+status: experimental
+group: DSFR - layouts
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    fluid:
+      type: boolean
+      title: 'Fluid'
+    gutters:
+      type: boolean
+      title: 'Gutters'
+    align:
+      type: string
+      title: Horizontal align
+      enum:
+        - fr-grid-row--left
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+    valign:
+      type: string
+      title: Vertical align
+      enum:
+        - fr-grid-row--top
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+slots:
+  content:
+    title: content
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.core

@@ -1,0 +1,32 @@
+name: DSFR - Tag
+description: DSFR tag component
+status: experimental
+group: DSFR
+variants:
+  sm:
+    title: Small
+  md:
+    title: Medium
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: "Label"
+    url:
+      title: URL
+      type: string
+    dismiss:
+      type: boolean
+      title: "Dismiss"
+    color:
+      type: string
+      title: "Color scheme"
+    icon:
+      type: string
+      title: Icon
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tag

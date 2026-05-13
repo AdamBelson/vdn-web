@@ -1,0 +1,49 @@
+name: DSFR - Link
+description: DSFR link component
+status: experimental
+group: DSFR
+variants:
+  xs:
+    title: 'Extra small'
+  sm:
+    title: 'Small'
+  md:
+    title: 'Medium'
+  lg:
+    title: 'Large'
+props:
+  type: object
+  properties:
+    icon:
+      type: string
+      title: 'Icon CSS class'
+    icon_position:
+      type: string
+      title: 'Icon position'
+      enum:
+        - left
+        - right
+    href:
+      type: string
+      title: 'Href'
+    label:
+      type: string
+      title: 'Label'
+    detail:
+      type: string
+      title: 'Detail'
+    download:
+      type: boolean
+      title: 'Download'
+    assess_file:
+      type: boolean
+      title: 'Assess file'
+    external:
+      type: boolean
+      title: 'External link'
+  required:
+    - label
+    - href
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.core

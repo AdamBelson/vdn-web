@@ -1,0 +1,22 @@
+uuid: 0995b446-6309-4ba9-bb22-6ba870454aed
+langcode: en
+status: true
+dependencies:
+  theme:
+    - dsfr
+_core:
+  default_config_hash: ukzBV43jrq5dT5QyLEeRhyWgTcEYOiAxMvv1lMjUDhk
+id: dsfr_local_tasks
+theme: dsfr
+region: content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

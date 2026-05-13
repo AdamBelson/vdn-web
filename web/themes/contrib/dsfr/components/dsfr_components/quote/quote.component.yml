@@ -1,0 +1,35 @@
+name: DSFR - Quote
+description: DSFR quote component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    quote:
+      type: string
+      title: 'Quote'
+    source:
+      type: string
+      title: 'Source'
+    author:
+      type: string
+      title: 'Author'
+    items:
+      type: array
+      title: 'Quote items'
+      description: 'Will be a list'
+      items:
+        type: object
+  required:
+    - quote
+    - author
+slots:
+  image:
+    title: 'Image'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.quote

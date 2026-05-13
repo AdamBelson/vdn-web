@@ -1,0 +1,29 @@
+
+{% set attributes = create_attribute({
+  class: ['fr-breadcrumb'],
+  'aria-label': 'You are here'|t,
+  role: 'navigation',
+}) %}
+{% set attributes_item = create_attribute({class: 'fr-breadcrumb__link'}) %}
+{% set html_id = 'breadcrumb-default' %}
+
+<nav{{ attributes }}>
+  <button class="fr-breadcrumb__button" aria-expanded="false" aria-controls="{{ html_id }}">
+    Voir le fil d’Ariane
+  </button>
+  <div class="fr-collapse" id="{{ html_id }}">
+    <ol class="fr-breadcrumb__list">
+      {% for menu_link in breadcrumb %}
+        {% set attributes_item = create_attribute({class: ['fr-breadcrumb__link']}) %}
+        <li>
+          {% if menu_link.url %}
+            {% set attributes_item = attributes_item.setAttribute('href', menu_link.url) %}
+          {% else %}
+            {% set attributes_item = attributes_item.setAttribute('aria-current', 'page') %}
+          {% endif %}
+          <a{{ attributes_item }}>{{ menu_link.text }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</nav>

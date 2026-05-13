@@ -1,0 +1,27 @@
+{% set attributes = create_attribute({class: ['fr-quote', 'fr-quote--column']}) %}
+{% if html_id %}
+  {% set attributes = attributes.setAttribute('id', html_id) %}
+{% endif %}
+
+<figure{{ attributes }}>
+  <blockquote{% if source %} cite="{{ source }}"{% endif %}>
+    <p>{{ quote }}</p>
+  </blockquote>
+  <figcaption>
+    <p class="fr-quote__author">{{ author }}</p>
+    {% if items %}
+    <ul class="fr-quote__source">
+      {% for item in items %}
+      <li>
+        {{ item }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% if image %}
+    <div class="fr-quote__image">
+      {{ image }}
+    </div>
+    {% endif %}
+  </figcaption>
+</figure>

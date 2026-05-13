@@ -1,0 +1,19 @@
+{% if content %}
+  {{ include('dsfr:onecol', {
+    content: content.top,
+    fluid: false,
+    gutters: true,
+  }) }}
+  {{ include('dsfr:twocol', {
+    variant: '50-50',
+    first: content.first,
+    second: content.second,
+    fluid: false,
+    gutters: true,
+  }) }}
+  {{ include('dsfr:onecol', {
+    content: content.bottom,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

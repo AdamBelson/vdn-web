@@ -1,0 +1,41 @@
+#app-dsfr-drupal[class*="user"] #block-dsfr-local-tasks {
+  display: none !important;
+}
+
+#app-dsfr-drupal[class*="user"] .form-actions.js-form-wrapper.form-wrapper,
+#app-dsfr-drupal[class*="user"] .button.js-form-submit.form-submit.fr-btn,
+#app-dsfr-drupal[class*="user"]
+  .button.button--primary.js-form-submit.form-submit.fr-btn {
+  width: 100%;
+}
+
+#app-dsfr-drupal[class*="user"] .user-register-form .fr-fieldset {
+  align-items: baseline;
+}
+
+#app-dsfr-drupal[class*="user"] .user-register-form .fr-fieldset #edit-account {
+  padding: 1rem;
+}
+
+#app-dsfr-drupal[class*="user"]
+  .user-register-form
+  .fr-fieldset
+  #edit-account
+  .js-form-type-textfield {
+  margin-top: 1rem;
+  margin-left: -1px;
+}
+
+#app-dsfr-drupal[class*="user"] .user-register-form .fr-fieldset details {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+#app-dsfr-drupal[class*="user"] .user-register-form .field--name-user-picture {
+  width: 100%;
+}
+
+#app-dsfr-drupal[class*="user"] .user-pass .fr-fieldset {
+  flex-direction: column;
+  align-items: baseline;
+}

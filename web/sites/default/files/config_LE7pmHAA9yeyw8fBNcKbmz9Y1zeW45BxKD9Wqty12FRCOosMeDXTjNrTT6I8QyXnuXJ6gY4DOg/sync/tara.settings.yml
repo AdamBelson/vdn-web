@@ -1,0 +1,44 @@
+_core:
+  default_config_hash: 75Jlt8g2DiRAAw0PaFSzt2aN-PXO8500AHLmLVVgpvQ
+favicon:
+  mimetype: image/gif
+  path: 'public://armoiries_BEARN_2.gif'
+  use_default: false
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+logo:
+  path: 'public://armoiries_BEARN_0.gif'
+  use_default: false
+all_icons_show: 1
+facebook_url: 'https://www.facebook.com/idewdot'
+twitter_url: 'https://twitter.com/dewdots'
+instagram_url: 'https://www.instagram.com/google'
+linkedin_url: 'https://in.linkedin.com/company/google'
+youtube_url: 'https://www.youtube.com/user/Google'
+vk_url: ''
+whatsapp_url: ''
+github_url: ''
+telegram_url: ''
+vimeo_url: ''
+slider_show: 1
+slider_image:
+  - '7'
+slider_time: '5000'
+slider_dots: 'true'
+slider_arrow: 'true'
+slider_code: "<li>\r\n\t<p>Bienvenue à Viellenave de Navarrenx</p>\r\n\t<br />\r\n\t<a class=\"button\" href=\"#\">Lire la suite</a>\r\n</li>\r\n<li>\r\n\t<p>Un Message du Maire</p>\r\n\t<br />\r\n\t<a class=\"button\" href=\"#\">Lire la suite</a>\r\n</li>\r\n<li>\r\n\t<p>Quelques autres choses intéressantes</p>\r\n\t<br />\r\n\t<a class=\"button\" href=\"#\">Lire la suite</a>\r\n</li>"
+front_sidebar: 0
+google_font: local
+node_author_pic: 0
+node_tags: 0
+copyright_text: 1
+scrolltotop_on: 1
+css_extra: 0
+css_code: ''
+fontawesome_four: 0
+fontawesome_five: 0
+fontawesome_six: 0
+bootstrapicons: 0

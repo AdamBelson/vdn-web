@@ -1,0 +1,20 @@
+{
+  "name": "dsfr-drupal",
+  "version": "1.13.1",
+  "description": "Lint usage.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint:css": "stylelint '**/*.{css,scss}'",
+    "lint:css:gitlab": "stylelint '**/*.{css,scss}' --custom-formatter=@gitlab-formatters/stylelint-formatter-gitlab --output-file=gl-codequality.json",
+    "lint:css:fix": "stylelint --fix '**/*.{css,scss}'"
+  },
+  "devDependencies": {
+    "@gitlab-formatters/stylelint-formatter-gitlab": "^1.0.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-formatter-gitlab": "^1.0.2",
+    "stylelint-order": "^7.0.0",
+    "stylelint-prettier": "^5.0.3"
+  }
+}

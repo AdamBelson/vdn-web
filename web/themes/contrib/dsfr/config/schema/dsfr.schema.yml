@@ -1,0 +1,399 @@
+dsfr.settings:
+  type: theme_settings
+  label: 'DSFR theme settings'
+  mapping:
+    general:
+      type: mapping
+      label: 'General Settings'
+      mapping:
+        institution:
+          type: string
+          label: 'Name of official (or parent) institution.'
+        mourning:
+          type: boolean
+          label: 'Mourning mode'
+        version:
+          type: mapping
+          label: 'Version'
+          mapping:
+            name:
+              type: string
+              label: 'Name of the version'
+            color:
+              type: string
+              label: 'Version badge color'
+            only:
+              type: boolean
+              label: 'SHOW badge only'
+    header:
+      type: mapping
+      label: 'Header'
+      mapping:
+        container:
+          type: boolean
+          label: 'The header will take up the FULL WIDTH of the page.'
+        logo:
+          type: mapping
+          label: 'Logo'
+          mapping:
+            img:
+              type: boolean
+              label: 'HIDE your personal logo IMAGE (header only)'
+            text:
+              type: boolean
+              label: 'HIDE your personal logo TEXT -name/service- (header only)'
+        settings:
+          type: mapping
+          mapping:
+            visible:
+              type: boolean
+              label: 'Activate display settings'
+            label:
+              type: string
+              label: 'Display settings'
+        search:
+          type: mapping
+          mapping:
+            label:
+              type: string
+              label: 'Search'
+    navigation:
+      type: mapping
+      label: 'Navigation'
+      mapping:
+        container:
+          type: boolean
+          label: 'The navigation will take up the FULL WIDTH of the page.'
+        megamenu:
+          type: boolean
+          label: 'Activate Megamenu'
+          description: 'Note all submenus will be "mega" if this option is activated, as designed by DSFR team.'
+        max_items_in_lvl3_by_col:
+          type: integer
+          title: 'Max items in lvl3 by col'
+          description: 'If the number of items in a col is greater than this value, the col will be splitted.'
+    hero:
+      type: mapping
+      label: 'Hero'
+      mapping:
+        container:
+          type: boolean
+          label: 'The Hero will take up the FULL WIDTH of the page.'
+        margin:
+          type: mapping
+          label: 'Margin'
+          mapping:
+            top:
+              type: integer
+              label: 'Top margin'
+              default: 3
+            bottom:
+              type: integer
+              label: 'Bottom margin'
+              default: 3
+    breadcrumb:
+      type: mapping
+      label: 'Breadcrumb'
+      mapping:
+        position:
+          type: integer
+          label: 'Position'
+          default: 0
+        margin:
+          type: mapping
+          label: 'Margin'
+          mapping:
+            top:
+              type: integer
+              label: 'Top'
+              default: 1
+            bottom:
+              type: integer
+              label: 'Bottom'
+              default: 1
+    content:
+      type: mapping
+      label: 'Content'
+      mapping:
+        container:
+          type: boolean
+          label: 'The main content will take up the FULL WIDTH of the page.'
+        margin:
+          type: mapping
+          label: 'Margin'
+          mapping:
+            top:
+              type: integer
+              label: 'Top margin'
+              default: 3
+            bottom:
+              type: integer
+              label: 'Bottom margin'
+              default: 6
+    footer_top:
+      type: mapping
+      label: 'Footer top'
+      mapping:
+        container:
+          type: boolean
+          label: 'The footer top will take up the FULL WIDTH of the page.'
+    footer:
+      type: mapping
+      label: 'Footer'
+      mapping:
+        container:
+          type: boolean
+          label: 'The footer will take up the FULL WIDTH of the page.'
+        logo:
+          type: mapping
+          label: 'Logo'
+          mapping:
+            img:
+              type: boolean
+              label: 'HIDE your personal logo IMAGE (footer only)'
+              default: true
+        last_line:
+          type: boolean
+          label: 'SHOW the line «Unless otherwise stated, all texts on this site are under licence etalab-2.0 »'
+          default: true
+    code:
+      type: mapping
+      label: 'Code'
+      mapping:
+        production:
+          type: boolean
+          label: 'DSFR production mode'
+          default: false
+        verbose:
+          type: boolean
+          label: 'DSFR Verbose mode'
+          default: false
+        level:
+          type: string
+          label: 'DSFR log level'
+          default: 'info'
+          enum:
+            - log
+            - debug
+            - info
+            - warn
+            - error
+        mode:
+          type: string
+          label: 'DSFR mode'
+          default: 'auto'
+          enum:
+            - auto
+            - manual
+            - runtime
+            - loaded
+            - vue
+            - angular
+            - react
+        prevent_flash:
+          type: boolean
+          label: 'Prevent flash'
+          description: 'Prevent flash effect on page load (usually when user uses dark mode)'
+          default: false
+        gdpr:
+          type: integer
+          label: 'GDPR Library'
+          default: 0
+        newsletter:
+          type: integer
+          label: 'Newsletter (Library)'
+          default: 0
+        w3c:
+          type: boolean
+          label: 'W3C'
+          default: false
+        external_lib:
+          type: integer
+          label: 'W3C Validation'
+          default: 1
+        components:
+          type: mapping
+          label: 'Full or partial DSFR loading'
+          mapping:
+            accordion:
+              type: boolean
+              label: 'Accordion'
+            alert:
+              type: boolean
+              label: 'Alert'
+            badge:
+              type: boolean
+              label: 'Badge'
+            breadcrumb:
+              type: boolean
+              label: 'Breadcrumb'
+            button:
+              type: boolean
+              label: 'Button'
+            callout:
+              type: boolean
+              label: 'Callout'
+            card:
+              type: boolean
+              label: 'Card'
+            checkbox:
+              type: boolean
+              label: 'Checkbox'
+            connect:
+              type: boolean
+              label: 'Connect'
+            consent:
+              type: boolean
+              label: 'Consent banner'
+            content:
+              type: boolean
+              label: 'Content'
+            display:
+              type: boolean
+              label: 'Display'
+            download:
+              type: boolean
+              label: 'Download'
+            follow:
+              type: boolean
+              label: 'Follow'
+            footer:
+              type: boolean
+              label: 'Footer'
+            form:
+              type: boolean
+              label: 'Form'
+            header:
+              type: boolean
+              label: 'Header'
+            highlight:
+              type: boolean
+              label: 'Highlight'
+            input:
+              type: boolean
+              label: 'Input'
+            link:
+              type: boolean
+              label: 'Link'
+            logo:
+              type: boolean
+              label: 'Logo'
+            modal:
+              type: boolean
+              label: 'Modal'
+            navigation:
+              type: boolean
+              label: 'Navigation'
+            notice:
+              type: boolean
+              label: 'Notice'
+            pagination:
+              type: boolean
+              label: 'Pagination'
+            password:
+              type: integer
+              label: 'Password'
+            quote:
+              type: boolean
+              label: 'Quote'
+            radio:
+              type: boolean
+              label: 'Radio'
+            search:
+              type: boolean
+              label: 'Search'
+            segmented:
+              type: boolean
+              label: 'Segmented'
+            select:
+              type: boolean
+              label: 'Select'
+            share:
+              type: boolean
+              label: 'Share'
+            sidemenu:
+              type: boolean
+              label: 'Sidemenu'
+            skiplink:
+              type: boolean
+              label: 'Skiplink'
+            stepper:
+              type: boolean
+              label: 'Stepper'
+            summary:
+              type: boolean
+              label: 'Summary'
+            tab:
+              type: boolean
+              label: 'Tab'
+            table:
+              type: boolean
+              label: 'Table'
+            tag:
+              type: boolean
+              label: 'Tag'
+            tile:
+              type: boolean
+              label: 'Tile'
+            toggle:
+              type: boolean
+              label: 'Toggle'
+            tooltip:
+              type: boolean
+              label: 'Tooltip'
+            transcription:
+              type: boolean
+              label: 'Transcription'
+            translate:
+              type: boolean
+              label: 'Translate'
+            upload:
+              type: boolean
+              label: 'Upload'
+            utility:
+              type: boolean
+              label: 'Utility'
+    features:
+      type: mapping
+      label: 'Features'
+      mapping:
+        node_user_picture:
+          type: boolean
+          label: 'User pictures in posts'
+        comment_user_picture:
+          type: boolean
+          label: 'User pictures in comments'
+        comment_user_verification:
+          type: boolean
+          label: 'User verification status in comments'
+        favicon:
+          type: boolean
+          label: 'Shortcut icon'
+          default: false
+    info_important:
+      type: mapping
+      label: 'Important info'
+      mapping:
+        message:
+          type: string
+          label: 'Message'
+        show:
+          type: boolean
+          label: 'Show'
+        close:
+          type: boolean
+          label: Close
+    logo:
+      type: mapping
+      label: 'Logo'
+      mapping:
+        use_default:
+          type: boolean
+          label: 'Use the logo supplied by the theme'
+    favicon:
+      type: mapping
+      label: 'Favicon'
+      mapping:
+        use_default:
+          type: boolean
+          label: 'Use the favicon supplied by the theme'

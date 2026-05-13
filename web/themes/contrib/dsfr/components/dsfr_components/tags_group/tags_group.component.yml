@@ -1,0 +1,16 @@
+name: DSFR - Tags group
+description: DSFR tags group component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+slots:
+  tags:
+    title: Tags
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tag

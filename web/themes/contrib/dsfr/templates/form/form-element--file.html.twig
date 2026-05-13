@@ -1,0 +1,27 @@
+{%
+  set classes = [
+  'js-form-item',
+  'form-item',
+  'js-form-type-' ~ type|clean_class,
+  'form-type--' ~ type|clean_class,
+  type in ['checkbox', 'radio'] ? 'form-type--boolean',
+  'js-form-item-' ~ name|clean_class,
+  'form-item--' ~ name|clean_class,
+  title_display not in ['after', 'before'] ? 'form-item--no-label',
+  disabled == 'disabled' ? 'form-item--disabled',
+  errors ? 'form-item--error',
+]
+%}
+{%
+  set description_classes = [
+  'form-item__description',
+  description_display == 'invisible' ? 'visually-hidden',
+]
+%}
+{{ include('dsfr:upload', {
+  attributes: attributes,
+  hints: hints,
+  label: label,
+  errors: errors,
+  children: children,
+}) }}

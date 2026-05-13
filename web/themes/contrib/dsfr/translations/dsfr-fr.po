@@ -1,0 +1,741 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 3.x\n"
+"POT-Creation-Date: 2025-12-10 08:35+0100\n"
+"PO-Revision-Date: 2025-12-10 08:35+0100\n"
+"Last-Translator: Oulalahakabu <slemerre@ac-montpellier.fr>\n"
+"Language-Team: French <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "French State DESIGN SYSTEM"
+msgstr "Système de design de l'État français"
+
+msgid "Customize the DSFR Theme based on"
+msgstr "Personnaliser le thème DSFR basé sur"
+
+msgid "General"
+msgstr "Général"
+
+msgid "Contains recurring elements throughout the theme."
+msgstr "Contient des éléments récurrents dans tout le thème."
+
+msgid "Header"
+msgstr "En-tête"
+
+msgid "Main menu"
+msgstr "Navigation principale"
+
+msgid "The navigation will take up the FULL WIDTH of the page."
+msgstr "La navigation occupera la largeur complète de la page."
+
+msgid "Use the megamenu."
+msgstr "Utiliser le mégamenu."
+
+msgid "Max items in level 3 by column."
+msgstr "Nombre maximum d'éléments au niveau 3 par colonne."
+
+msgid "Hero"
+msgstr "Mise en avant"
+
+msgid "Breadcrumb"
+msgstr "Fil d'Ariane"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Footer Top"
+msgstr "Haut du pied de page"
+
+msgid "The footer top will take up the FULL WIDTH of the page."
+msgstr "Le haut du pied de page occupera la largeur complète de la page."
+
+msgid "Footer"
+msgstr "Pied de page"
+
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "Name of official (or parent) institution."
+msgstr "Nom de l'institution officielle (ou parente)."
+
+msgid "Mandatory label that will appear <strong>under</strong> the <strong><em>Marianne</em> logo</strong>.\n      <br>By default or empty, the label will be the example.\n      <br><strong>Note:</strong> the line crossing will be preserved, but you can add the tag &lt;br&gt; for a new line."
+msgstr "Libellé obligatoire qui apparaîtra <strong>sous</strong> le <strong><em>logo Marianne</em></strong>.\n      <br>Par défaut ou vide, le libellé sera l'exemple.\n      <br><strong>Note :</strong> les sauts de ligne seront préservés, mais vous pouvez ajouter la balise &lt;br&gt; pour un nouveau saut de ligne."
+
+msgid "Mourning mode"
+msgstr "Mode deuil"
+
+msgid "Version"
+msgstr "Version"
+
+msgid "Displays a version badge next to the site title (example: beta, dev, etc.). If the field is not filled in, the badge will not appear."
+msgstr "Affiche un badge de version à côté du titre du site (exemple : beta, dev, etc.). Si le champ n'est pas rempli, le badge n'apparaîtra pas."
+
+msgid "Example : preview"
+msgstr "Exemple : aperçu"
+
+msgid "Version badge color"
+msgstr "Couleur du badge de version"
+
+msgid "Blue Ecume"
+msgstr "Bleu écume"
+
+msgid "Blue Cumulus"
+msgstr "Bleu cumulus"
+
+msgid "Green Archipel"
+msgstr "Vert archipel"
+
+msgid "Green Menthe"
+msgstr "Vert menthe"
+
+msgid "Green Emeraude"
+msgstr "Vert émeraude"
+
+msgid "Green Bourgeon"
+msgstr "Vert bourgeon"
+
+msgid "Green Tilleul Verveine"
+msgstr "Vert tilleul verveine"
+
+msgid "Yellow Tournesol"
+msgstr "Jaune tournesol"
+
+msgid "Yellow Moutarde"
+msgstr "Jaune moutarde"
+
+msgid "Brown Cafe Creme"
+msgstr "Brun café crème"
+
+msgid "Brown Caramel"
+msgstr "Brun caramel"
+
+msgid "Brown Opera"
+msgstr "Brun opéra"
+
+msgid "Pink Macaron"
+msgstr "Rose macaron"
+
+msgid "Pink Tuile"
+msgstr "Rose tuile"
+
+msgid "Purple Glycine"
+msgstr "Violet glycine"
+
+msgid "Beige Gris Galet"
+msgstr "Beige gris galet"
+
+msgid "SHOW badge only"
+msgstr "Afficher uniquement le badge"
+
+msgid "Size"
+msgstr "Taille"
+
+msgid "The header will take up the FULL WIDTH of the page."
+msgstr "L'en-tête occupera la largeur complète de la page."
+
+msgid "Logo"
+msgstr "Logo"
+
+msgid "HIDE your personal logo IMAGE (header only)"
+msgstr "Masquer l'image de votre logo personnel (en-tête uniquement)"
+
+msgid "HIDE your personal logo TEXT -name/service- (header only)"
+msgstr "Masquer le texte de votre logo personnel -nom/service- (en-tête uniquement)"
+
+msgid "Display settings"
+msgstr "Paramètres d'affichage"
+
+msgid "Activate display settings"
+msgstr "Activer les paramètres d'affichage"
+
+msgid "Display parameters label (also works with the default account menu)"
+msgstr "Libellé des paramètres d'affichage (fonctionne également avec le menu de compte par défaut)"
+
+msgid "If the field is not filled in, the label will be set to « Display settings »"
+msgstr "Si le champ n'est pas rempli, le libellé sera défini sur « Paramètres d'affichage »"
+
+msgid "Example : Display settings"
+msgstr "Exemple : Paramètres d'affichage"
+
+msgid "Search"
+msgstr "Recherche"
+
+msgid "Placeholder"
+msgstr "Placeholder"
+
+msgid "If the field is not filled in, the label will be set to « @search »"
+msgstr "Si le champ n'est pas rempli, le libellé sera défini sur « @search »"
+
+msgid "Example : Search"
+msgstr "Exemple : Recherche"
+
+msgid "Top margin"
+msgstr "Marge supérieure"
+
+msgid "Distance between the header or the hero and the main content."
+msgstr "Distance entre l'en-tête ou la mise en avant et le contenu principal."
+
+msgid "Bottom margin"
+msgstr "Marge inférieure"
+
+msgid "Distance between the main content and the footer."
+msgstr "Distance entre le contenu principal et le pied de page."
+
+msgid "The Hero will take up the FULL WIDTH of the page."
+msgstr "La mise en avant occupera la largeur complète de la page."
+
+msgid "Distance between the header and the hero."
+msgstr "Distance entre l'en-tête et la mise en avant."
+
+msgid "Distance between the hero and the main content."
+msgstr "Distance entre la mise en avant et le contenu principal."
+
+msgid "The main content will take up the FULL WIDTH of the page."
+msgstr "Le contenu principal occupera la largeur complète de la page."
+
+msgid "The footer will take up the FULL WIDTH of the page."
+msgstr "Le pied de page occupera la largeur complète de la page."
+
+msgid "HIDE your personal logo IMAGE (footer only)"
+msgstr "Masquer l'image de votre logo personnel (pied de page uniquement)"
+
+msgid "SHOW the line <strong>« Unless otherwise stated, all texts on this site are under licence etalab-2.0 »</strong>"
+msgstr "Afficher la ligne <strong>« Sauf mention contraire, tous les textes de ce site sont sous licence etalab-2.0 »</strong>"
+
+msgid "DSFR production mode"
+msgstr "Mode production DSFR"
+
+msgid "Enable production mode."
+msgstr "Activer le mode production."
+
+msgid "DSFR verbose mode"
+msgstr "Mode verbeux DSFR"
+
+msgid "Enable verbose mode."
+msgstr "Activer le mode verbeux."
+
+msgid "DSFR log level"
+msgstr "Niveau de journalisation DSFR"
+
+msgid "Choose DSFR log level."
+msgstr "Choisir le niveau de journalisation DSFR."
+
+msgid "DSFR mode"
+msgstr "Mode DSFR"
+
+msgid "Choose DSFR mode, auto is the default."
+msgstr "Choisir le mode DSFR, auto est la valeur par défaut."
+
+msgid "Prevent flash effect"
+msgstr "Empêcher l'effet de flash"
+
+msgid "Prevent flash effect on page load (usually when user uses dark mode), works partially ..."
+msgstr "Empêcher l'effet de flash au chargement de la page (généralement lorsque l'utilisateur utilise le mode sombre), fonctionne partiellement..."
+
+msgid "GDPR Library"
+msgstr "Bibliothèque RGPD"
+
+msgid "Library associated with this component (banner with accept/refuse/customize option + Cookies management panel"
+msgstr "Bibliothèque associée à ce composant (bannière avec options accepter/refuser/personnaliser + panneau de gestion des cookies)"
+
+msgid "None"
+msgstr "Aucun"
+
+msgid "Tacjs (Module based on Tarteaucitron)"
+msgstr "Tacjs (Module basé sur Tarteaucitron)"
+
+msgid "Management proposed by the DSFR library (cookie support code to develop yourself)"
+msgstr "Gestion proposée par la bibliothèque DSFR (code de support des cookies à développer vous-même)"
+
+msgid "Newsletter (Library)"
+msgstr "Lettre d'information (Bibliothèque)"
+
+msgid "Simplenews"
+msgstr "Simplenews"
+
+msgid "Other (such as your own code)"
+msgstr "Autre (comme votre propre code)"
+
+msgid "Remove the role attribute if necessary for W3C validation."
+msgstr "Supprimer l'attribut role si nécessaire pour la validation W3C."
+
+msgid "Full or partial DSFR loading"
+msgstr "Chargement complet ou partiel de DSFR"
+
+msgid "Using the library in the library folder (/libraries/dsfr/dist/dsfr.css)"
+msgstr "Utilisation de la bibliothèque dans le dossier des bibliothèques (/libraries/dsfr/dist/dsfr.css)"
+
+msgid "By default (can be partially loaded)"
+msgstr "Par défaut (peut être chargé partiellement)"
+
+msgid "You can force the presence of a specific DSFR library on all pages with the default mode."
+msgstr "Vous pouvez forcer la présence d'une bibliothèque DSFR spécifique sur toutes les pages avec le mode par défaut."
+
+msgid "@size x minimal size"
+msgstr "@size x taille minimale"
+
+msgid "(by default)"
+msgstr "(par défaut)"
+
+msgid "Allowed extensions:"
+msgstr "Extensions autorisées :"
+
+msgid "Allowed size:"
+msgstr "Taille autorisée :"
+
+msgid "Your email address (e.g. name@domain.fr)"
+msgstr "Votre adresse e-mail (ex. nom@domaine.fr)"
+
+msgid "Very Small"
+msgstr "Très petit"
+
+msgid "Small"
+msgstr "Petit"
+
+msgid "Medium"
+msgstr "Moyen"
+
+msgid "Large"
+msgstr "Grand"
+
+msgid "X-Large"
+msgstr "Très grand"
+
+msgid "DSFR"
+msgstr "DSFR"
+
+msgid "DSFR is a base theme for Drupal, which uses for the frontend the DSFR library (French State Design System)."
+msgstr "DSFR est un thème de base pour Drupal, qui utilise pour le frontend la bibliothèque DSFR (Système de design de l'État français)."
+
+msgid "Header Top menu (one line)"
+msgstr "Menu supérieur de l'en-tête (une ligne)"
+
+msgid "Header Search"
+msgstr "Recherche dans l'en-tête"
+
+msgid "Primary menu"
+msgstr "Menu principal"
+
+msgid "Notice (important)"
+msgstr "Information (importante)"
+
+msgid "Sidebar First"
+msgstr "Barre latérale première"
+
+msgid "Tabs"
+msgstr "Onglets"
+
+msgid "Highlighted"
+msgstr "Mis en évidence"
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Sidebar Second"
+msgstr "Barre latérale seconde"
+
+msgid "Newsletter"
+msgstr "Lettre d'information"
+
+msgid "Social menu"
+msgstr "Menu social"
+
+msgid "Footer Top 1"
+msgstr "Haut du pied de page 1"
+
+msgid "Footer Top 2"
+msgstr "Haut du pied de page 2"
+
+msgid "Footer Top 3"
+msgstr "Haut du pied de page 3"
+
+msgid "Footer Top 4"
+msgstr "Haut du pied de page 4"
+
+msgid "Footer Top 5"
+msgstr "Haut du pied de page 5"
+
+msgid "Footer Top 6"
+msgstr "Haut du pied de page 6"
+
+msgid "Footer body (presentation text, etc.)"
+msgstr "Corps du pied de page (texte de présentation, etc.)"
+
+msgid "Footer First menu (Official institutions)"
+msgstr "Premier menu du pied de page (Institutions officielles)"
+
+msgid "Footer Main partner"
+msgstr "Partenaire principal du pied de page"
+
+msgid "Footer Partners"
+msgstr "Partenaires du pied de page"
+
+msgid "Footer last menu"
+msgstr "Dernier menu du pied de page"
+
+msgid "Footer last line (copyright, etc.)"
+msgstr "Dernière ligne du pied de page (copyright, etc.)"
+
+msgid "DSFR theme settings"
+msgstr "Paramètres du thème DSFR"
+
+msgid "General Settings"
+msgstr "Paramètres généraux"
+
+msgid "Name of the version"
+msgstr "Nom de la version"
+
+msgid "Navigation"
+msgstr "Navigation"
+
+msgid "Activate Megamenu"
+msgstr "Activer le mégamenu"
+
+msgid "Margin"
+msgstr "Marge"
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Top"
+msgstr "Haut"
+
+msgid "Bottom"
+msgstr "Bas"
+
+msgid "Footer top"
+msgstr "Haut du pied de page"
+
+msgid "SHOW the line «Unless otherwise stated, all texts on this site are under licence etalab-2.0 »"
+msgstr "Afficher la ligne « Sauf mention contraire, tous les textes de ce site sont sous licence etalab-2.0 »"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "DSFR Verbose mode"
+msgstr "Mode verbeux DSFR"
+
+msgid "Prevent flash"
+msgstr "Empêcher le flash"
+
+msgid "W3C"
+msgstr "W3C"
+
+msgid "W3C Validation"
+msgstr "Validation W3C"
+
+msgid "Accordion"
+msgstr "Accordéon"
+
+msgid "Alert"
+msgstr "Alerte"
+
+msgid "Badge"
+msgstr "Badge"
+
+msgid "Button"
+msgstr "Bouton"
+
+msgid "Callout"
+msgstr "Bandeau d'information importante"
+
+msgid "Card"
+msgstr "Carte"
+
+msgid "Checkbox"
+msgstr "Case à cocher"
+
+msgid "Connect"
+msgstr "Bouton FranceConnect"
+
+msgid "Consent banner"
+msgstr "Gestionnaire de consentement"
+
+msgid "Display"
+msgstr "Affichage"
+
+msgid "Download"
+msgstr "Téléchargement de fichier"
+
+msgid "Follow"
+msgstr "Lettre d'information et réseaux sociaux"
+
+msgid "Form"
+msgstr "Formulaire"
+
+msgid "Highlight"
+msgstr "Mise en exergue"
+
+msgid "Input"
+msgstr "Champ de saisie"
+
+msgid "Link"
+msgstr "Lien"
+
+msgid "Modal"
+msgstr "Modale"
+
+msgid "Notice"
+msgstr "Bandeau d'information importante"
+
+msgid "Pagination"
+msgstr "Pagination"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Quote"
+msgstr "Citation"
+
+msgid "Radio"
+msgstr "Bouton radio"
+
+msgid "Segmented"
+msgstr "Contrôle segmenté"
+
+msgid "Select"
+msgstr "Liste déroulante"
+
+msgid "Share"
+msgstr "Partage"
+
+msgid "Sidemenu"
+msgstr "Menu latéral"
+
+msgid "Skiplink"
+msgstr "Liens d'évitement"
+
+msgid "Stepper"
+msgstr "Indicateur d'étapes"
+
+msgid "Summary"
+msgstr "Sommaire"
+
+msgid "Tab"
+msgstr "Onglet"
+
+msgid "Table"
+msgstr "Tableau"
+
+msgid "Tag"
+msgstr "Tag"
+
+msgid "Tile"
+msgstr "Tuile"
+
+msgid "Toggle"
+msgstr "Interrupteur"
+
+msgid "Tooltip"
+msgstr "Infobulle"
+
+msgid "Transcription"
+msgstr "Transcription"
+
+msgid "Translate"
+msgstr "Sélecteur de langues"
+
+msgid "Upload"
+msgstr "Ajout de fichier"
+
+msgid "Utility"
+msgstr "Utilitaire"
+
+msgid "Features"
+msgstr "Fonctionnalités"
+
+msgid "User pictures in posts"
+msgstr "Photos d'utilisateurs dans les publications"
+
+msgid "User pictures in comments"
+msgstr "Photos d'utilisateurs dans les commentaires"
+
+msgid "User verification status in comments"
+msgstr "Statut de vérification de l'utilisateur dans les commentaires"
+
+msgid "Shortcut icon"
+msgstr "Icône de raccourci"
+
+msgid "Important info"
+msgstr "Information importante"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Show"
+msgstr "Afficher"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Use the logo supplied by the theme"
+msgstr "Utiliser le logo fourni par le thème"
+
+msgid "Favicon"
+msgstr "Favicon"
+
+msgid "Use the favicon supplied by the theme"
+msgstr "Utiliser la favicon fournie par le thème"
+
+msgid "Submitted by @author_name on @date"
+msgstr "Soumis par @author_name le @date"
+
+msgid "You have not created any content types yet. Go to the <a href=\"@create_content\">content type creation page</a> to add a new content type."
+msgstr "Vous n'avez pas encore créé de types de contenu. Allez sur la <a href=\"@create_content\">page de création de types de contenu</a> pour ajouter un nouveau type de contenu."
+
+msgid "<a class=\"fr-pagination__link\" aria-current=\"page\" title=\"Page @items\">Page @items</a>"
+msgstr "<a class=\"fr-pagination__link\" aria-current=\"page\" title=\"Page @items\">Page @items</a>"
+
+msgid "User account menu"
+msgstr "Menu du compte utilisateur"
+
+msgid "Site branding"
+msgstr "Marque du site"
+
+msgid "Breadcrumbs"
+msgstr "Fil d'Ariane"
+
+msgid "Main page content"
+msgstr "Contenu principal de la page"
+
+msgid "Main navigation"
+msgstr "Navigation principale"
+
+msgid "Status messages"
+msgstr "Messages de statut"
+
+msgid "Page title"
+msgstr "Titre de la page"
+
+msgid "Powered by Drupal"
+msgstr "Propulsé par Drupal"
+
+msgid "Tools"
+msgstr "Outils"
+
+msgid "visible"
+msgstr "visible"
+
+msgid "Unless otherwise stated, all texts on this site are under"
+msgstr "Sauf mention contraire, tous les textes de ce site sont sous"
+
+msgid "Choose a custom appearance"
+msgstr "Choisir une apparence personnalisée"
+
+msgid "Light theme"
+msgstr "Thème clair"
+
+msgid "Dark theme"
+msgstr "Thème sombre"
+
+msgid "System theme"
+msgstr "Thème du système"
+
+msgid "You are here"
+msgstr "Vous êtes ici"
+
+msgid "Hide"
+msgstr "Cacher"
+
+msgid "Use system settings"
+msgstr "Utiliser les paramètres du système d'exploitation"
+
+msgid "In this section"
+msgstr "Dans cette section"
+
+msgid "Enter the terms you wish to search for"
+msgstr "Saisissez les mots-clés de votre recherche"
+
+msgid "Quick access"
+msgstr "Accès rapide"
+
+msgid "licence etalab-2.0"
+msgstr "license etalab-2.0"
+
+msgid "Main content"
+msgstr "Contenu principal"
+
+msgid "Next page"
+msgstr "Page suivante"
+
+msgid "Go to next page"
+msgstr "Aller à la page suivante"
+
+msgid "Previous page"
+msgstr "Page précédente"
+
+msgid "Go to previous page"
+msgstr "Aller à la page précédente"
+
+msgid "Pagination"
+msgstr "Pagination"
+
+msgid "Last page"
+msgstr "Dernière page"
+
+msgid "Go to last page"
+msgstr "Aller à la dernière page"
+
+msgid "Current page"
+msgstr "Page courante"
+
+msgid "Go to page @key"
+msgstr "Aller à la page @key"
+
+msgid "First page"
+msgstr "Première page"
+
+msgid "Our partners"
+msgstr "Partenaires"
+
+msgid "Text Formats"
+msgstr "Formats de texte"
+
+msgid "Service unavailable"
+msgstr "Service indisponible"
+
+msgid "Maintenance mode"
+msgstr "Mode maintenance"
+
+msgid "Access denied"
+msgstr "Accès refusé"
+
+msgid "403 error"
+msgstr "Erreur 403"
+
+msgid "You are not authorized to access this page."
+msgstr "Vous n'êtes pas autorisé à accéder à cette page."
+
+msgid "Homepage"
+msgstr "Accueil"
+
+msgid "Page not found"
+msgstr "Page non trouvée"
+
+msgid "The page you are looking for cannot be found. We apologize for the inconvenience."
+msgstr "La page que vous cherchez n'a pas été trouvée. Nous vous prions de nous excuser pour la gêne occasionnée."
+
+msgid "If you typed the web address in your browser, please check that it is correct. The page may no longer be available."
+msgstr "Si vous avez saisi l'adresse web dans votre navigateur, veuillez vérifier qu'elle est correcte. La page n'est peut-être plus disponible."
+
+msgid "If this is the case, to continue your visit you can visit our home page, or perform a search using our search engine at the top of the page."
+msgstr "Dans ce cas, pour poursuivre votre visite, vous pouvez consulter notre page d'accueil ou effectuer une recherche à l'aide de notre moteur de recherche situé en haut de la page."
+
+msgid "If not, contact us so that we can redirect you to the right information."
+msgstr "Sinon, contactez-nous afin que nous puissions vous rediriger vers les informations appropriées."
+
+msgid "Contact us"
+msgstr "Contactez-nous"
+
+msgid "Unexecpected error"
+msgstr "Erreur inattendue"
+
+msgid "Sorry, there's a problem with the service, we're working to resolve it as quickly as possible."
+msgstr "Désolé, il y a un problème avec le service, nous travaillons à le résoudre au plus vite."
+
+msgid "500 error"
+msgstr "Erreur 500"
+

@@ -1,0 +1,10 @@
+{% if content %}
+  {{ include('dsfr:threecol', {
+    variant: '25-50-25',
+    first: content.first,
+    second: content.second,
+    third: content.third,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

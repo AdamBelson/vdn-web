@@ -1,0 +1,107 @@
+general:
+  institution: 'République <br> Française'
+  mourning: false
+  version:
+    name: ''
+    color: 'green-bourgeon'
+    only: false
+header:
+  container: false
+  logo:
+    img: false
+    text: false
+  settings:
+    visible: true
+    label: 'Display settings'
+  search:
+    label: 'Search'
+navigation:
+  container: false
+  megamenu: false
+  max_items_in_lvl3_by_col: 5
+info_important:
+  message: ''
+  show: false
+  close: false
+hero:
+  container: false
+  margin:
+    top: 3
+    bottom: 3
+breadcrumb:
+  position: 0
+  margin:
+    top: 1
+    bottom: 1
+content:
+  container: false
+  margin:
+    top: 3
+    bottom: 6
+footer_top:
+  container: false
+footer:
+  container: false
+  logo:
+    img: true
+  last_line: true
+code:
+  gdpr: 0
+  newsletter: 0
+  w3c: false
+  external_lib: 1
+  components:
+    accordion: true
+    alert: true
+    badge: true
+    breadcrumb: true
+    button: true
+    callout: true
+    card: true
+    checkbox: true
+    connect: true
+    consent: true
+    content: true
+    display: true
+    download: true
+    follow: true
+    footer: true
+    form: true
+    header: true
+    highlight: true
+    input: true
+    link: true
+    logo: true
+    modal: true
+    navigation: true
+    notice: true
+    pagination: true
+    quote: true
+    radio: true
+    search: true
+    segmented: true
+    select: true
+    share: true
+    sidemenu: true
+    skiplink: true
+    stepper: true
+    summary: true
+    tab: true
+    table: true
+    tag: true
+    tile: true
+    toggle: true
+    tooltip: true
+    transcription: true
+    translate: true
+    upload: true
+    utility: true
+features:
+  node_user_picture: true
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: false
+logo:
+  use_default: true
+favicon:
+  use_default: false

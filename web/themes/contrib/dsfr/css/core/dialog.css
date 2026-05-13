@@ -1,0 +1,34 @@
+.ui-widget-overlay.ui-front {
+  z-index: 1000;
+}
+
+.ui-widget-overlay {
+  background: #333 !important;
+}
+
+.ui-dialog {
+  z-index: 2000 !important;
+}
+
+.ui-dialog button &:hover {
+  color: var(--text-inverted-blue-france);
+  background-color: var(--background-action-high-blue-france-hover);
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  display: flex;
+}
+
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+  position: relative !important;
+  width: 30px !important;
+  margin: 15px 0 -10px;
+  opacity: 1;
+}
+
+.ui-dialog .fr-collapse {
+  --collapse-max-height: auto !important;
+}
+.ui-dialog .fr-link--close.fr-link {
+  display: none !important;
+}

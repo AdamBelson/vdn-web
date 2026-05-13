@@ -1,0 +1,154 @@
+{% set attributes = create_attribute() %}
+{% set aria_label = aria_label|default('Main menu'|t) %}
+{% set html_id = html_id|default('menu-main') %}
+{% set is_megamenu = is_megamenu|default(false) %}
+{% set mega_menu_h = mega_menu_h|default(4) %}
+{% set max_items_in_lvl3_by_col = max_items_in_lvl3_by_col|default(6) %}
+
+<nav{{ attributes.addClass('fr-nav').setAttribute('role', 'navigation').setAttribute('aria-label', aria_label).setAttribute('id', html_id|clean_id) }}>
+  <ul class="fr-nav__list">
+    {% if is_megamenu %}
+      {{ _self.megamenu_links(4, 4, items, attributes, 0, max_items_in_lvl3_by_col) }}
+    {% else %}
+      {{ _self.menu_links(items, attributes, 0) }}
+    {% endif %}
+  </ul>
+</nav>
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      {% for item in items %}
+        <li{{ item.attributes.addClass('fr-nav__item') }}>
+          {% if item.below %}
+            {% set item_id = 'menu-' ~ loop.index ~ '-' ~ random() %}
+            <button class="fr-nav__btn"
+                    aria-expanded="false"
+                    aria-controls="{{ item_id }}"{% if item.in_active_trail %} aria-current="true"{% endif %}>
+              <span data-href="{{ item.url }}">{{ item.title }}</span>
+            </button>
+            <div class="fr-collapse fr-menu" id="{{ item_id }}">
+              {{ _self.menu_links(item.below, attributes, menu_level + 1) }}
+            </div>
+          {% else %}
+            {{ _self.menu_link(item) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    {% else %}
+      <ul class="fr-menu__list">
+        {% for item in items %}
+          <li{{ item.attributes.addClass('fr-nav__item') }}>
+            {{ _self.menu_link(item) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+
+{% macro menu_link(item) %}
+  {% set link_attributes = item.link_attributes|default(create_attribute()) %}
+  {% if item.in_active_trail %}
+    {% set link_attributes = link_attributes.setAttribute('aria-current', item.below ? 'true' : 'page') %}
+  {% endif %}
+  {{ link(item.title, item.url, link_attributes.addClass('fr-nav__link')) }}
+{% endmacro %}
+
+{% macro megamenu_links(mega_menu_h, mega_menu_category_level, items, attributes, menu_level, max_items_in_lvl3_by_col, index, parent, ul_class) %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      {% for item in items %}
+        <li{{ item.attributes.addClass('fr-nav__item') }}>
+          {% if item.below %}
+            {% set item_id = 'mega-menu-' ~ loop.index ~ '-' ~ random() %}
+            <button class="fr-nav__btn" aria-expanded="false"
+                    aria-controls="{{ item_id }}"{% if item.in_active_trail %} aria-current="true"{% endif %}>
+              <span data-href="{{ item.url }}">{{ item.title }}</span>
+            </button>
+            <div class="fr-collapse fr-mega-menu" id="{{ item_id }}"
+                 tabindex="-1">
+              {{ _self.megamenu_links(mega_menu_h, mega_menu_category_level, item.below, attributes, menu_level + 1, max_items_in_lvl3_by_col, item_id, item) }}
+            </div>
+          {% else %}
+            {{ _self.menu_link(item) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    {% elseif menu_level == 1 %}
+      <div class="fr-container fr-container--fluid fr-container-lg">
+        <button class="fr-btn fr-btn--close" aria-controls="{{ index }}"
+                title="{{ 'Close'|t }}">{{ 'Close'|t }}</button>
+        <div class="fr-grid-row fr-grid-row-lg--gutters">
+          {% if parent.content and parent.content.extra_title %}
+            <div
+              class="fr-col-12 fr-col-lg-8 fr-col-offset-lg-4--right fr-mb-4v">
+              <div class="fr-mega-menu__leader">
+                <h{{ mega_menu_h }}
+                  class="fr-h4 fr-mb-2v">{{ parent.content.extra_title }}</h{{ mega_menu_h }}>
+                {% if parent.content.extra_description %}
+                  <p
+                    class="fr-hidden fr-unhidden-lg">{{ parent.content.extra_description|raw }}</p>
+                {% endif %}
+                {% if parent.content.extra_link %}
+                  <a class="fr-link fr-fi-arrow-right-line fr-link--icon-right"
+                     href="{{ parent.content.extra_link.url }}">
+                    {{ parent.content.extra_link.label }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+          {# In case of item has more than 4 children, display children into a grid with columns. #}
+          {% for item in items %}
+            {% set nb_cols = 0 %}
+            {% set col_lg_item = 12 %}
+            {% set belowCount = item.below|length %}
+            {% if belowCount <= max_items_in_lvl3_by_col %}
+              {% set nb_cols = 1 %}
+              {% set col_lg_item = 2 %}
+              {% set col_md_item = 3 %}
+            {% elseif belowCount <= (max_items_in_lvl3_by_col * 2) %}
+              {% set nb_cols = 2 %}
+              {% set col_lg_item = 4 %}
+              {% set col_md_item = 6 %}
+            {% elseif belowCount <= (max_items_in_lvl3_by_col * 3) %}
+              {% set nb_cols = 3 %}
+              {% set col_lg_item = 6 %}
+              {% set col_md_item = 9 %}
+            {% elseif belowCount <= (max_items_in_lvl3_by_col * 4) %}
+              {% set nb_cols = 4 %}
+              {% set col_lg_item = 9 %}
+              {% set col_md_item = 12 %}
+            {% else %}
+              {% set nb_cols = 6 %}
+              {% set col_lg_item = 12 %}
+              {% set col_md_item = 12 %}
+            {% endif %}
+            {% set ul_class = nb_cols > 0 ? 'fr-multicolumn' ~ nb_cols : none %}
+            <div {{ item.attributes.addClass('fr-col-12 fr-col-md-' ~ col_md_item ~ ' fr-col-lg-' ~ col_lg_item) }}>
+              <h{{ mega_menu_category_level }} class="fr-mega-menu__category">
+                {% if not item.url %}
+                  <span class="fr-nav__link">{{ item.title }}</span>
+                {% else %}
+                  {{ _self.menu_link(item) }}
+                {% endif %}
+              </h{{ mega_menu_category_level }}>
+              {% if item.below %}
+                {{ _self.megamenu_links(mega_menu_h, mega_menu_category_level, item.below, attributes, menu_level + 2, max_items_in_lvl3_by_col, item_id, item, ul_class) }}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <ul class="fr-mega-menu__list {{ ul_class }}">
+        {% for item in items %}
+          <li{{ item.attributes }}>
+            {{ _self.menu_link(item) }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
+{% endmacro %}

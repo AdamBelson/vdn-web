@@ -1,0 +1,11 @@
+@media screen and (min-width: 1080px) {
+  #dsfr-components {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+
+    .form-type--checkbox {
+      margin-block: auto;
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{% set variant = '33-33-33' %}
+{% for class in attributes.getClass() %}
+  {% if '25-50-25' in class %}
+    {% set variant = '25-50-25' %}
+  {% elseif '25-25-50' in class %}
+    {% set variant = '25-25-50' %}
+  {% elseif '50-25-25' in class %}
+    {% set variant = '50-25-25' %}
+  {% endif %}
+{% endfor %}
+
+{% if content %}
+  {{ include('dsfr:threecol', {
+    variant: variant,
+    first: content.first,
+    second: content.second,
+    third: content.third,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

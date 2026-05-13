@@ -1,0 +1,27 @@
+uuid: 87e3e39c-b939-4e3a-8939-a0d0527dab49
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - dsfr
+_core:
+  default_config_hash: JbboGAWXcM4ErhcGpZPnWVWgwJb4UvBoYWQP0N6O6uI
+id: dsfr_main_menu
+theme: dsfr
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: true
+visibility: {  }

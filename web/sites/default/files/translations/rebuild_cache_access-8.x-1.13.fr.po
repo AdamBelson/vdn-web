@@ -1,0 +1,22 @@
+# French translation of Rebuild Cache Access (8.x-1.13)
+# Copyright (c) 2026 by the French translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Rebuild Cache Access (8.x-1.13)\n"
+"POT-Creation-Date: 2026-04-19 10:54+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: French\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+
+msgid "Utility"
+msgstr "Utilité"
+msgid "Rebuild Cache"
+msgstr "Reconstruire le Cache"
+msgid "Rebuild cache"
+msgstr "Reconstruire le cache"
+msgid "All caches cleared."
+msgstr "Tous les caches ont été vidés."

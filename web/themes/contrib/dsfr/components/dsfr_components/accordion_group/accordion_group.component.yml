@@ -1,0 +1,20 @@
+name: DSFR - Accordion group
+description: DSFR Accordion group component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    items:
+      type: array
+      title: 'Items'
+      items:
+        type: object
+  required:
+    - items
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.accordion

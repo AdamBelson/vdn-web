@@ -1,0 +1,9 @@
+{% if not attributes.hasAttribute('title') %}
+  {% set attributes = attributes.setAttribute('title', attributes['value']) %}
+{% endif %}
+{{ include('dsfr:button', {
+  type: 'submit',
+  attributes: attributes.addClass(['fr-btn', 'fr-btn--primary']),
+  label: attributes.title,
+}) }}
+{{ children }}

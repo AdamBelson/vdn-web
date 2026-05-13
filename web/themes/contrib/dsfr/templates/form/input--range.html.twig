@@ -1,0 +1,8 @@
+<div class="fr-range" data-fr-js-range="true">
+  <span class="fr-range__output" data-fr-js-range-output="true">{{ attributes.value|default(attributes.min) }}</span>
+  <input{{ attributes.addClass(classes).setAttribute('aria-labelledby', attributes.id ~ '--label') }}>
+  <span class="fr-range__min" aria-hidden="true" data-fr-js-range-limit="true">{{ attributes.min }}</span>
+  <span class="fr-range__max" aria-hidden="true" data-fr-js-range-limit="true">{{ attributes.max }}</span>
+</div>
+{{ children }}
+{{ attach_library('dsfr/lib.range') }}

@@ -1,0 +1,32 @@
+{% set attributes = create_attribute({
+  class: ['fr-tag'],
+}) %}
+
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass('fr-tag--' ~ variant) %}
+{% endif %}
+
+{% if not dismiss and icon %}
+  {% set attributes = attributes.addClass(icon) %}
+{% endif %}
+
+{% if color %}
+  {% set attributes = attributes.addClass('fr-tag--' ~ color) %}
+{% endif %}
+
+{% if url and url != '' %}
+  <a{{ attributes.setAttribute('href', url) }}>
+    {{ label }}
+  </a>
+{% else %}
+  {% set tag = dismiss ? 'button' : 'p' %}
+  {% if tag == 'button' %}
+    {% set attributes = attributes.setAttribute('type', 'button') %}
+  {% endif %}
+  {% if dismiss %}
+    {% set attributes = attributes.addClass('fr-tag--dismiss').setAttribute('onclick', 'event.preventDefault(); this.parentNode.removeChild(this);') %}
+  {% endif %}
+  <{{ tag }}{{ attributes }}>
+  {{ label }}
+  </{{ tag }}>
+{% endif %}

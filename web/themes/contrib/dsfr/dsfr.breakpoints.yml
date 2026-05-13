@@ -1,0 +1,30 @@
+dsfr.xs:
+  label: Very Small
+  mediaQuery: 'all and (max-width: 575px)'
+  weight: 0
+  multipliers:
+    - 1x
+dsfr.sm:
+  label: Small
+  mediaQuery: 'all and (min-width: 576px)'
+  weight: 1
+  multipliers:
+    - 1x
+dsfr.md:
+  label: Medium
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 2
+  multipliers:
+    - 1x
+dsfr.lg:
+  label: Large
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 3
+  multipliers:
+    - 1x
+dsfr.xl:
+  label: X-Large
+  mediaQuery: 'all and (min-width: 1248px)'
+  weight: 4
+  multipliers:
+    - 1x

@@ -1,0 +1,20 @@
+uuid: 7e518c27-1337-4536-9411-10d622280947
+langcode: en
+status: true
+dependencies:
+  theme:
+    - localgov_base
+_core:
+  default_config_hash: O-oSwMAtp65xes7Nbp2cnZEx2azaMpuSPowOKbjigcc
+id: localgov_base_local_actions
+theme: localgov_base
+region: content
+weight: -7
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

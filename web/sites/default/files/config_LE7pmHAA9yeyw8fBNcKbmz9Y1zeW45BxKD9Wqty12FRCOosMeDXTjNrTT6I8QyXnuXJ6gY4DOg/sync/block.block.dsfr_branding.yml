@@ -1,0 +1,25 @@
+uuid: dec4fe52-4061-4f72-8943-dd895a179f91
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dsfr
+_core:
+  default_config_hash: 7qHGiEOaZsaf6t4mZ2K6FOmJwo4r2pBZWEzEVvjyY6E
+id: dsfr_branding
+theme: dsfr
+region: header_menu
+weight: -2
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: true
+visibility: {  }

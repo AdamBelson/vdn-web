@@ -1,0 +1,38 @@
+name: DSFR - FranceConnect
+description: DSFR FranceConnect component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    html_tag:
+      type: string
+      title: 'HTML tag of the button'
+      enum:
+        - button
+        - a
+    plus:
+      type: boolean
+      title: 'France connect plus'
+      default_value: false
+    label:
+      type: string
+      title: 'Label'
+    brand:
+      type: string
+      title: 'Brand'
+      default_value: 'FranceConnect'
+  required:
+    - label
+    - brand
+slots:
+  link:
+    title: 'Link'
+    description: 'Link for user to explain how to connect'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.connect

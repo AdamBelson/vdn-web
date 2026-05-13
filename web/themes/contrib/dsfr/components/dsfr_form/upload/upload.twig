@@ -1,0 +1,24 @@
+{% set html_id = html_id|default('fr-upload-group--' ~ random()) %}
+{% set html_message_id = html_id ~ '-messages' %}
+{% set attributes = create_attribute({class: ['fr-upload-group'], id: html_id}) %}
+
+{% if errors %}
+  {% set attributes = attributes.addClass('fr-upload-group--error') %}
+{% endif %}
+
+<div{{ attributes }}>
+  <label class="fr-label" for="{{ html_id }}">
+    {{ label }}
+    {% if hints %}
+    <div class="fr-hint-text">
+      {{ hints }}
+    </div>
+    {% endif %}
+  </label>
+  {{ children }}
+  {% if errors %}
+  <div class="fr-messages-group" id="{{ html_message_id }}" aria-live="polite">
+    <div class="fr-message fr-message--error">{{ errors }}</div>
+  </div>
+  {% endif %}
+</div>

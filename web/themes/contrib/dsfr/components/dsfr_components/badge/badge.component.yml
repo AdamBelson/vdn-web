@@ -1,0 +1,44 @@
+name: DSFR - Badge
+description: DSFR badge component
+status: experimental
+group: DSFR
+variants:
+  error:
+    title: 'Error'
+  success:
+    title: 'Success'
+  info:
+    title: 'Information'
+  warning:
+    title: 'Warning'
+  error--sm:
+    title: "Error small"
+  success--sm:
+    title: "Success small"
+  info--sm:
+    title: "Info small"
+  warning--sm:
+    title: "Warning small"
+props:
+  type: object
+  properties:
+    html_tag:
+      type: string
+      title: 'HTML tag'
+      enum:
+        - p
+        - span
+    no_icon:
+      type: boolean
+      title: "Disable system icon"
+    label:
+      type: string
+      title: Label
+    ellipsis:
+      type: boolean
+      title: Ellipsis
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.badge

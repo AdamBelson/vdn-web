@@ -1,0 +1,26 @@
+{% set attributes = create_attribute({class: 'fr-alert'}) %}
+{% if variant and variant != 'default' %}
+  {% set variants = variant|split('--')|map(v => v|replace({(v): 'fr-alert--' ~ ((v == 'status') ? 'success' : v)})) %}
+  {% set attributes = attributes.addClass(variants) %}
+{% endif %}
+
+{% if html_id %}
+  {% set attributes = attributes.setAttribute('id', html_id) %}
+{% endif %}
+
+{% if icon %}
+  {% set attributes = attributes.addClass('fr-icon-' ~ icon) %}
+{% endif %}
+
+<div{{ attributes }}>
+  {% if title %}
+    <h3 class="fr-alert__title">{{ title }}</h3>
+  {% endif %}
+  <div>{{ message }}</div>
+  {{ include('dsfr:button', {
+    type: 'button',
+    classes: ['fr-btn--close', 'fr-btn'],
+    onclick: 'const alert = this.parentNode; alert.parentNode.removeChild(alert)',
+    label: 'Hide'|t,
+  }, with_context: false) }}
+</div>

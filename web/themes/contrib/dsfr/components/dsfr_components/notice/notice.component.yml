@@ -1,0 +1,37 @@
+name: DSFR - Notice
+description: DSFR notice component
+status: experimental
+group: DSFR
+variants:
+  error:
+    title: 'Error'
+  success:
+    title: 'Success'
+  info:
+    title: 'Information'
+  warning:
+    title: 'Warning'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    title:
+      type: string
+      title: 'Alert title'
+    icon:
+      type: string
+      title: 'Custom icon'
+  required:
+    - title
+slots:
+  description:
+    title: Description
+  link:
+    title: Link
+    description: 'Could be any link with fr-notice__link applied.'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.notice

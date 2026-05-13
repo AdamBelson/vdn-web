@@ -1,0 +1,648 @@
+<?php
+
+/**
+ * @file
+ * DSFR main theme.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Component\Utility\DeprecationHelper;
+use Drupal\Core\Asset\AttachedAssetsInterface;
+use Drupal\Core\Extension\ThemeSettingsProvider;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
+use Drupal\dsfr\Dsfr;
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsfr_preprocess_page(&$variables) {
+  $variables['page']['main'] = [
+    'hero' => $variables['page']['hero'] ?? FALSE,
+    'breadcrumb' => $variables['page']['breadcrumb'] ?? FALSE,
+    'sidebar_first' => $variables['page']['sidebar_first'] ?? FALSE,
+    'sidebar_second' => $variables['page']['sidebar_second'] ?? FALSE,
+    'tabs' => $variables['page']['tabs'] ?? FALSE,
+    'highlighted' => $variables['page']['highlighted'] ?? FALSE,
+    'help' => $variables['page']['help'] ?? FALSE,
+    'content' => $variables['page']['content'] ?? FALSE,
+  ];
+
+  $variables['page']['follow'] = [
+    'newsletter' => $variables['page']['follow_newsletter'] ?? FALSE,
+    'social' => $variables['page']['follow_social'] ?? FALSE,
+  ];
+
+  $variables['page']['footer'] = [
+    'content' => $variables['page']['footer'] ?? FALSE,
+    'menu_last' => $variables['page']['footer_menu_last'] ?? FALSE,
+    'last' => $variables['page']['footer_last'] ?? FALSE,
+    'menu_first' => $variables['page']['footer_menu_first'] ?? FALSE,
+    'partner' => $variables['page']['footer_partner'] ?? FALSE,
+    'partners' => $variables['page']['footer_partners'] ?? FALSE,
+    'top' => [],
+  ];
+  foreach ($variables['page'] as $key => $value) {
+    if (str_starts_with($key, 'footer_top_')) {
+      $variables['page']['footer']['top'][] = $value;
+    }
+  }
+  $variables['theme'] = _dsfr_settings();
+  $variables['site'] = _dsfr_site_config();
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsfr_preprocess_html(&$variables) {
+  $variables['theme'] = _dsfr_settings();
+  $variables['site'] = _dsfr_site_config();
+
+  // Data-theme light.
+  $variables['html_attributes']['data-fr-js'] = 'true';
+  $variables['html_attributes']['data-fr-scheme'] = 'system';
+
+  // DSFR's path.
+  $dsfr_library_path = $variables['theme']['dsfr']['library_path'];
+
+  // Meta.
+  $viewport = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    ],
+  ];
+  $variables['#attached']['html_head'][] = [$viewport, 'viewport'];
+
+  $theme_color = [
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'theme-color',
+      'content' => '#000091',
+      'data-fr-theme-color' => '#000091',
+      'data-fr-theme-color-dark' => '#161616',
+    ],
+  ];
+  $variables['#attached']['html_head'][] = [$theme_color, 'theme-color'];
+
+  // Favicons.
+  $apple_touch_icon = [
+    'rel' => 'apple-touch-icon',
+    'href' => $dsfr_library_path . '/dist/favicon/apple-touch-icon.png',
+  ];
+  $variables['#attached']['html_head_link'][] = [$apple_touch_icon, 'apple-touch-icon'];
+
+  $icon = [
+    'rel' => 'icon',
+    'href' => $dsfr_library_path . '/dist/favicon/favicon.svg',
+    'type' => 'image/svg+xml',
+  ];
+  $variables['#attached']['html_head_link'][] = [$icon, 'icon'];
+
+  $shortcut_icon = [
+    'rel' => 'shortcut icon',
+    'href' => $dsfr_library_path . '/dist/favicon/favicon.ico',
+    'type' => 'image/x-icon',
+  ];
+  $variables['#attached']['html_head_link'][] = [$shortcut_icon, 'shortcut icon'];
+
+  $manifest = [
+    'rel' => 'manifest',
+    'href' => $dsfr_library_path . '/dist/favicon/manifest.webmanifest',
+    'crossorigin' => 'use-credentials',
+  ];
+  $variables['#attached']['html_head_link'][] = [$manifest, 'manifest'];
+
+  // Add DSFR configuration in head top level.
+  $dsfr_config = [
+    'production' => $variables['theme']['code']['production'],
+    'verbose' => $variables['theme']['code']['verbose'],
+    'level' => $variables['theme']['code']['level'],
+    'mode' => $variables['theme']['code']['mode'],
+  ];
+  $inline_js = 'window.dsfr = ' . json_encode($dsfr_config) . ';';
+  $variables['#attached']['html_head'][] = [[
+    '#type' => 'html_tag',
+    '#tag' => 'script',
+    '#value' => $inline_js,
+    '#weight' => -100,
+  ],
+    'dsfr_inline_config',
+  ];
+
+  // Add DSFR prevent flash feature.
+  // @see https://www.systeme-de-design.gouv.fr/
+  if ($variables['theme']['code']['prevent_flash']) {
+    /** @var \Drupal\Core\Extension\ThemeExtensionList $theme_extension */
+    $theme_extension = \Drupal::service('extension.list.theme');
+    $js_path = $theme_extension->getPath('dsfr') . '/js/dsfr-anti-flash.js';
+    $inline_js = file_get_contents($js_path);
+    $safe_js = new FormattableMarkup($inline_js, []);
+    $variables['#attached']['html_head'][] = [[
+      '#type' => 'html_tag',
+      '#tag' => 'script',
+      '#attributes' => [
+        'type' => 'module',
+      ],
+      '#value' => $safe_js,
+      '#allow_raw' => TRUE,
+      '#weight' => -999,
+    ], 'dsfr_prevent_flash',
+    ];
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function dsfr_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  switch ($hook) {
+    case 'form_element':
+      $suggestions[] = $hook . '__' . $variables['element']['#type'];
+      break;
+
+    default:
+  }
+
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsfr_preprocess_form_element(&$variables) {
+  switch ($variables['element']['#type']) {
+    case 'datetime':
+    case 'date':
+      $variables['#attached']['library'][] = 'dsfr/datetime';
+      break;
+
+    case 'file':
+      $variables['html_id'] = $variables['element']['#id'];
+      $variables['label'] = $variables['element']['#title'];
+      $variables['hints'] = [];
+      if (isset($variables['element']['#description']) && $variables['element']['#description']) {
+        $variables['hints']['#items'][] = $variables['element']['#description'];
+      }
+      if (isset($variables['element']['#upload_validators']['file_validate_extensions'][0])
+        && strlen($variables['element']['#upload_validators']['file_validate_extensions'][0])) {
+        $variables['hints']['#items'][] = t('Allowed extensions:') . ' ' .
+          $variables['element']['#upload_validators']['file_validate_extensions'][0];
+      }
+      if (isset($variables['element']['#upload_validators']['file_validate_size'][0])
+        && is_numeric($variables['element']['#upload_validators']['file_validate_size'][0])) {
+        $variables['hints']['#items'][] = t('Allowed size:') . ' ' .
+          round($variables['element']['#upload_validators']['file_validate_size'][0] / (8 * 1024 * 1024), 1) . ' Mo';
+      }
+      if (count($variables['hints'])) {
+        $variables['hints']['#theme'] = 'item_list';
+      }
+      break;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function dsfr_page_attachments_alter(array &$attachments) {
+  // If full lib is selected, use it.
+  if (_dsfr_theme_get_setting('code.external_lib')) {
+    $attachments['#attached']['library'] = array_diff($attachments['#attached']['library'], ['dsfr/lib']);
+    $attachments['#attached']['library'][] = 'dsfr/full';
+  }
+  else {
+    // User has selected partial load, lets proceed.
+    foreach (_dsfr_components() as $dsfr_component) {
+      if (_dsfr_theme_get_setting(sprintf('code.components.%s', $dsfr_component))) {
+        $attachments['#attached']['library'][] = 'dsfr/lib.' . $dsfr_component;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function dsfr_library_info_alter(&$libraries, $extension) {
+  // If full lib is selected, set all components as empty.
+  if ($extension === 'dsfr' && _dsfr_theme_get_setting('code.external_lib')) {
+    foreach ($libraries as $key => &$library) {
+      if (strpos($key, 'lib.') === 0 && $key !== 'lib.utility') {
+        $library = ['js' => [], 'css' => []];
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsfr_preprocess_menu__account(&$variables) {
+  $settings = _dsfr_settings();
+  $variables['display'] = $settings['header']['settings'];
+
+  $variables['html_id'] = 'account-menu';
+
+  foreach ($variables['items'] as $routeName => &$item) {
+    switch ($routeName) {
+      case 'user.login':
+        $item['attributes']->addClass('fr-link')->addClass('fr-icon-account-line');
+        break;
+
+      case 'user.page':
+        $item['attributes']->addClass('fr-link')->addClass('fr-icon-close-circle-line');
+        break;
+
+      case 'user.logout':
+        $item['attributes']->addClass('fr-link')->addClass('fr-icon-lock-line');
+        break;
+
+      default:
+        $item['attributes']->addClass('fr-link');
+
+    }
+  }
+  if ($settings['header']['settings']['visible']) {
+    $variables['items']['display_settings'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'button',
+      '#value' => $settings['header']['settings']['label'] ?? t('Display settings'),
+      '#attributes' => [
+        'type' => 'button',
+        'class' => ['fr-link', 'fr-icon-theme-fill', 'fr-link--icon-left'],
+        'aria-controls' => 'fr-theme-modal',
+        'data-fr-opened' => 'false',
+      ],
+      '#attached' => ['library' => ['dsfr/lib.display']],
+    ];
+  }
+  $variables['attributes']['class'][] = 'fr-links-group';
+  $variables['#attached']['library'][] = 'dsfr/lib.utility';
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function dsfr_preprocess_menu__main(&$variables) {
+  $settings = _dsfr_settings();
+  $variables['theme_settings'] = $settings;
+  $variables['is_megamenu'] = $settings['navigation']['megamenu'];
+  $variables['max_items_in_lvl3_by_col'] = $settings['navigation']['max_items_in_lvl3_by_col'];
+  $variables['html_id'] = 'main-menu';
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function dsfr_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $route_name = Drupal::routeMatch()->getRouteName();
+  switch ($route_name) {
+    case 'entity.node.canonical':
+      if ($node = Drupal::routeMatch()->getParameter('node')) {
+        $suggestions[] = 'page__' . $node->bundle();
+      }
+      break;
+
+    case 'system.403':
+      $suggestions[] = 'page__403__dsfr';
+      break;
+
+    case 'system.404':
+      $suggestions[] = 'page__404__dsfr';
+      break;
+
+    case 'system.500':
+      $suggestions[] = 'page__500__dsfr';
+      break;
+
+    case 'system.503':
+      $suggestions[] = 'page__503__dsfr';
+      break;
+
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_page_alter().
+ */
+function dsfr_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (isset($variables['elements']['content']['#block_content'])) {
+    array_splice($suggestions, 1, 0, 'block__' . $variables['elements']['content']['#block_content']->bundle());
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function dsfr_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  _dsfr_add_placeholders($form);
+  dsfr_attach_form_id($form, $form_id);
+}
+
+/**
+ * Add placeholders to suitable form elements.
+ */
+function _dsfr_add_placeholders(&$element) {
+  $search = ['search'];
+  if (isset($element['#type']) && in_array($element['#type'], $search)) {
+    $element['#attributes']['placeholder'] = $element['#title'];
+  }
+  foreach (Element::children($element) as $key) {
+    _dsfr_add_placeholders($element[$key]);
+  }
+}
+
+/**
+ * Remove submit for search.
+ */
+function dsfr_form_search_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['#attributes']['accept-charset'][] = 'UTF-8';
+  $form['actions'] = [];
+}
+
+/**
+ * Attach form id to all form elements.
+ *
+ * @param array $form
+ *   The form or form element which children should have form id attached.
+ * @param string $form_id
+ *   The form id attached to form elements.
+ */
+function dsfr_attach_form_id(&$form, $form_id) {
+  foreach (Element::children($form) as $child) {
+    if (!isset($form[$child]['#form_id'])) {
+      $form[$child]['#form_id'] = $form_id;
+    }
+    // Recurse for children.
+    dsfr_attach_form_id($form[$child], $form_id);
+  }
+}
+
+/**
+ * Retrieve globals settings.
+ *
+ * @return array
+ *   Globals settings.
+ */
+function _dsfr_settings(): array {
+  global $_dsfr_cache;
+  if (!isset($_dsfr_cache['theme'])) {
+    $theme_handler = \Drupal::service('theme_handler');
+    $base = base_path();
+    $base_absolute = Url::fromRoute('<front>')->setAbsolute()->toString();
+    $theme_path = $base . $theme_handler->getTheme('dsfr')->getPath();
+    $library_path = $base . 'libraries/dsfr';
+
+    $global = [
+      'front' => $base,
+      'front_relative' => $base_absolute,
+      'https' => '//',
+    ];
+
+    $dsfr_theme = [
+      'name' => 'dsfr',
+      'dashboard' => Url::fromRoute('system.theme_settings_theme', ['theme' => 'dsfr'])
+        ->toString(),
+      'path' => $theme_path,
+      'dist' => $theme_path . '/dist',
+      'lib' => $library_path,
+      'favicons' => $library_path . '/dist/favicon/',
+      'artwork' => $library_path . '/dist/artwork/',
+      'icons' => $library_path . '/dist/artwork/icons/',
+      'pictograms' => $library_path . '/dist/artwork/pictograms/',
+      'img' => $theme_path . '/dist/img/',
+      'version' => Dsfr::DSFR_VERSION,
+      'library_path' => $library_path,
+      'external' => _dsfr_theme_get_setting('code.external_lib'),
+    ];
+
+    $distribution = \Drupal::service('extension.list.profile')->getList();
+    $dsfr_project = [
+      'distrib' => $distribution,
+      'kickstart' => (array_key_exists('dsfr_kickstart', $distribution)) ? 1 : 0,
+    ];
+    $_dsfr_cache['settings'] = [
+      'global' => $global,
+      'dsfr' => $dsfr_theme,
+      'project' => $dsfr_project,
+      'general' => [
+        'institution' => (_dsfr_theme_get_setting('general.institution')) ? nl2br(_dsfr_theme_get_setting('general.institution')) : 'République <br> Française',
+        'mourning' => _dsfr_theme_get_setting('general.mourning'),
+        'version' => [
+          'name' => _dsfr_theme_get_setting('general.version.name'),
+          'color' => _dsfr_theme_get_setting('general.version.color'),
+          'only' => _dsfr_theme_get_setting('general.version.only'),
+        ],
+      ],
+      'header' => [
+        'container' => (_dsfr_theme_get_setting('header.container')) ? 'fr-container--fluid' : 'fr-container',
+        'logo' => [
+          'img' => _dsfr_theme_get_setting('header.logo.img'),
+          'text' => _dsfr_theme_get_setting('header.logo.text'),
+        ],
+        'settings' => [
+          'visible' => _dsfr_theme_get_setting('header.settings.visible'),
+          'label' => _dsfr_theme_get_setting('header.settings.label'),
+        ],
+        'search' => [
+          'label' => _dsfr_theme_get_setting('header.search.label'),
+        ],
+      ],
+      'navigation' => [
+        'container' => (_dsfr_theme_get_setting('navigation.container')) ? 'fr-container--fluid' : 'fr-container',
+        'megamenu' => (bool) _dsfr_theme_get_setting('navigation.megamenu'),
+        'max_items_in_lvl3_by_col' => (int) _dsfr_theme_get_setting('navigation.max_items_in_lvl3_by_col'),
+      ],
+      'hero' => [
+        'container' => (_dsfr_theme_get_setting('hero.container')) ? 'fr-container--fluid' : 'fr-container',
+        'margin' => [
+          'top' => _dsfr_theme_get_setting('hero.margin.top'),
+          'bottom' => _dsfr_theme_get_setting('hero.margin.bottom'),
+        ],
+      ],
+      'breadcrumb' => [
+        'position' => [
+          1 => ' rf-breadcrumb--center',
+          2 => ' rf-breadcrumb--right',
+        ][_dsfr_theme_get_setting('breadcrumb.position')] ?? '',
+        'margin' => [
+          'top' => _dsfr_theme_get_setting('breadcrumb.margin.top'),
+          'bottom' => _dsfr_theme_get_setting('breadcrumb.margin.bottom'),
+        ],
+      ],
+      'content' => [
+        'container' => (_dsfr_theme_get_setting('content.container')) ? 'fr-container--fluid' : 'fr-container',
+        'margin' => [
+          'top' => _dsfr_theme_get_setting('content.margin.top'),
+          'bottom' => _dsfr_theme_get_setting('content.margin.bottom'),
+        ],
+      ],
+      'footer_top' => [
+        'container' => (_dsfr_theme_get_setting('footer_top.container')) ? 'fr-container--fluid' : 'fr-container',
+      ],
+      'footer' => [
+        'container' => (_dsfr_theme_get_setting('footer.container')) ? 'fr-container--fluid' : 'fr-container',
+        'logo' => [
+          'img' => _dsfr_theme_get_setting('footer.logo.img'),
+        ],
+        'last_line' => _dsfr_theme_get_setting('footer.last_line'),
+      ],
+      'code' => [
+        'production' => _dsfr_theme_get_setting('code.production') ?? FALSE,
+        'verbose' => _dsfr_theme_get_setting('code.verbose') ?? FALSE,
+        'level' => _dsfr_theme_get_setting('code.level') ?? 'info',
+        'mode' => _dsfr_theme_get_setting('code.mode') ?? 'auto',
+        'prevent_flash' => _dsfr_theme_get_setting('code.prevent_flash') ?? FALSE,
+        'gdpr' => _dsfr_theme_get_setting('code.gdpr'),
+        'newsletter' => _dsfr_theme_get_setting('code.newsletter'),
+        'w3c' => _dsfr_theme_get_setting('code.w3c'),
+      ],
+      'features' => [
+        'node_user_picture' => _dsfr_theme_get_setting('features.node_user_picture'),
+        'comment_user_picture' => _dsfr_theme_get_setting('features.comment_user_picture'),
+        'comment_user_verification' => _dsfr_theme_get_setting('features.comment_user_verification'),
+        'favicon' => _dsfr_theme_get_setting('features.favicon'),
+      ],
+      'logo' => [
+        'use_default' => _dsfr_theme_get_setting('logo.use_default'),
+        'path' => _dsfr_theme_get_setting('logo.path'),
+      ],
+      'favicon' => [
+        'use_default' => _dsfr_theme_get_setting('favicon.use_default'),
+        'path' => _dsfr_theme_get_setting('favicon.path'),
+      ],
+    ];
+  }
+  return $_dsfr_cache['settings'];
+}
+
+/**
+ * Gets site's global config items.
+ *
+ * @return array
+ *   An array site configs items.
+ */
+function _dsfr_site_config(): array {
+  global $_dsfr_cache;
+  if (!isset($_dsfr_cache['site'])) {
+    $config = \Drupal::config('system.site');
+    $_dsfr_cache['site'] = [
+      'name'        => $config->get('name'),
+      'slogan'      => $config->get('slogan'),
+      'language'    => \Drupal::languageManager()->getCurrentLanguage()->getId(),
+      'maintenance' => \Drupal::state()->get('system.maintenance_mode'),
+      'users'       => [
+        'logged'    => \Drupal::currentUser()->isAuthenticated(),
+        'register'  => \Drupal::config('user.settings')->get('register'),
+      ],
+    ];
+  }
+  return $_dsfr_cache['site'];
+}
+
+/**
+ * Implements hook_css_alter().
+ */
+function dsfr_css_alter(array &$css, AttachedAssetsInterface $assets, LanguageInterface $language): void {
+  // @see https://www.drupal.org/project/dsfr/issues/3563439.
+  if (isset($css['modules/contrib/layout_paragraphs/css/builder.css'])) {
+    $css['modules/contrib/layout_paragraphs/css/builder.css']['group'] = CSS_AGGREGATE_THEME;
+    $css['modules/contrib/layout_paragraphs/css/builder.css']['weight'] = 50;
+  }
+}
+
+/**
+ * Array list of DSFR components.
+ *
+ * @return string[]
+ *   DSFR components machine name.
+ */
+function _dsfr_components(): array {
+  return [
+    'accordion',
+    'alert',
+    'badge',
+    'breadcrumb',
+    'button',
+    'callout',
+    'card',
+    'checkbox',
+    'connect',
+    'consent',
+    'content',
+    'display',
+    'download',
+    'follow',
+    'footer',
+    'form',
+    'header',
+    'highlight',
+    'input',
+    'link',
+    'logo',
+    'modal',
+    'navigation',
+    'notice',
+    'pagination',
+    'password',
+    'quote',
+    'radio',
+    'search',
+    'segmented',
+    'select',
+    'share',
+    'sidemenu',
+    'skiplink',
+    'stepper',
+    'summary',
+    'tab',
+    'table',
+    'tag',
+    'tile',
+    'toggle',
+    'tooltip',
+    'transcription',
+    'translate',
+    'upload',
+    'utility',
+  ];
+}
+
+/**
+ * Gets data from this configuration object.
+ *
+ * @param string $setting_name
+ *   A string that maps to a key within the configuration data.
+ *   For instance in the following configuration array:
+ *   @code
+ *   [
+ *     'foo' => [
+ *       'bar' => 'baz',
+ *     ],
+ *   ];
+ *   @endcode
+ *   A key of 'foo.bar' would return the string 'baz'. However, a key of 'foo'
+ *   would return ['bar' => 'baz'].
+ *   If no key is specified, then the entire data array is returned.
+ * @param string|null $theme
+ *   The theme name.
+ *
+ * @return mixed
+ *   The data that was requested.
+ */
+function _dsfr_theme_get_setting(string $setting_name, ?string $theme = NULL): mixed {
+  return DeprecationHelper::backwardsCompatibleCall(
+    currentVersion: \Drupal::VERSION,
+    deprecatedVersion: '11.3',
+    currentCallable: fn() => \Drupal::service(ThemeSettingsProvider::class)->getSetting($setting_name, $theme),
+    deprecatedCallable: fn() => theme_get_setting($setting_name, $theme),
+  );
+}

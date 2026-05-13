@@ -1,0 +1,47 @@
+{%
+  set fieldset_classes = [
+    'js-form-item',
+    'form-item',
+    'js-form-wrapper',
+    'form-wrapper',
+    'fr-fieldset',
+    errors ? 'fr-fieldset--error',
+  ]
+%}
+{%
+  set legend_classes = [
+    'fr-fieldset__legend--regular',
+    'fr-fieldset__legend',
+    'fr-text--regular',
+  ]
+%}
+{% set html_id_legend = attributes.id ~ '--legend--' ~ random() %}
+{% set attributes = attributes.addClass(fieldset_classes).setAttribute('aria-labelledby', html_id_legend).setAttribute('role', 'group') %}
+
+{% if error %}
+  {% set attributes = attributes.addClass('fr-fieldset--error') %}
+{% endif %}
+
+<fieldset{{ attributes.addClass(fieldset_classes) }}>
+  <legend{{ legend.attributes.addClass(legend_classes).setAttribute('id', html_id_legend) }}>
+    {{ legend.title }}
+    {% if description and description.content %}
+      <p class="fr-hint-text">{{ description.content }}</p>
+    {% endif %}
+  </legend>
+  {% if prefix %}
+    <span class="field-prefix">{{ prefix }}</span>
+  {% endif %}
+
+  {{ children }}
+
+  {% if errors %}
+    <div class="fr-messages-group" id="{{ attributes.id }}-error-messages" aria-live="assertive">
+      <p class="fr-message fr-message--error" id="{{ attributes.id }}-error-message-error">{{ errors }}</p>
+    </div>
+  {% endif %}
+
+    {% if suffix %}
+      <span class="field-suffix">{{ suffix }}</span>
+    {% endif %}
+</fieldset>

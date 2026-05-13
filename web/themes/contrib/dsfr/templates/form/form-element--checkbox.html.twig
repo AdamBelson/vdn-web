@@ -1,0 +1,28 @@
+{% set classes = [
+  'js-form-item',
+  'form-item',
+  'js-form-type-' ~ type|clean_class,
+  'form-item-' ~ name|clean_class,
+  'js-form-item-' ~ name|clean_class,
+  'fr-fieldset__element',
+  title_display not in ['after', 'before'] ? 'form-item--no-label',
+  disabled == 'disabled' ? 'form-disabled',
+] %}
+<div{{ attributes.addClass(classes) }}>
+  <div class="fr-checkbox-group">
+    {% if prefix is not empty %}
+      <span class="field-prefix">{{ prefix }}</span>
+    {% endif %}
+    {{ children }}
+    {% if suffix is not empty %}
+      <span class="field-suffix">{{ suffix }}</span>
+    {% endif %}
+    {{ label }}
+    {% if errors %}
+      <div id="{{ error_id }}" class="fr-error-text">
+        {{ errors }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+{{ attach_library('dsfr/lib.checkbox') }}

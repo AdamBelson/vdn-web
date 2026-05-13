@@ -1,0 +1,12 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set aria_label = aria_label|default('Main menu'|t) %}
+{% set is_megamenu = is_megamenu|default(false) %}
+{% set max_items_in_lvl3_by_col = max_items_in_lvl3_by_col|default(6) %}
+
+{{ include('dsfr:navigation', {
+    items: items,
+    attributes: attributes,
+    html_id: html_id,
+    is_megamenu: is_megamenu,
+    max_items_in_lvl3_by_col: max_items_in_lvl3_by_col,
+}) }}

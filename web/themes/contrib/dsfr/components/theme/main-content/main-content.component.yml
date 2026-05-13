@@ -1,0 +1,16 @@
+name: DSFR - Main content
+description: DSFR main content component (not a DSFR component)
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    theme_settings:
+      type: object
+      title: Theme settings
+      additionalProperties: true
+  required:
+    - theme_settings
+slots:
+  main:
+    title: Main content sections

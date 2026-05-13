@@ -1,0 +1,10 @@
+name: DSFR - Badge group
+description: DSFR badge group component
+status: experimental
+group: DSFR
+slots:
+  items:
+    title: 'Render array of badges'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.badge

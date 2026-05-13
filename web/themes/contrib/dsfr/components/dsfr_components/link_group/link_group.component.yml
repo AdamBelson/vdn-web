@@ -1,0 +1,53 @@
+name: DSFR - Link group
+description: DSFR link group component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    links:
+      type: array
+      title: 'Links'
+      items:
+        type: object
+        title: 'Link'
+        properties:
+          icon:
+            type: string
+            title: 'Icon CSS class'
+          icon_position:
+            type: string
+            title: 'Icon position'
+            enum:
+              - left
+              - right
+          href:
+            type: string
+            title: 'Href'
+          label:
+            type: string
+            title: 'Label'
+          detail:
+            type: string
+            title: 'Detail'
+          size:
+            type: string
+            title: 'Size'
+            enum:
+              - xs
+              - md
+              - sm
+              - lg
+          download:
+            type: boolean
+            title: 'Download'
+          assess_file:
+            type: boolean
+            title: 'Assess file'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.core

@@ -1,0 +1,22 @@
+uuid: f094d0db-a06e-41e5-b11f-73bfc20886a8
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dsfr
+_core:
+  default_config_hash: sL2dKOQGMaAb2uO8JL6gdcSybG-t0myyjD0KnbH4HyI
+id: dsfr_breadcrumbs
+theme: dsfr
+region: breadcrumb
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

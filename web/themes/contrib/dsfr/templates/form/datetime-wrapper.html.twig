@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a datetime form wrapper.
+ *
+ * Available variables:
+ * - content: The form element to be output, usually a datelist, or datetime.
+ * - title: The title of the form element.
+ * - title_attributes: HTML attributes for the title wrapper.
+ * - description: Description text for the form element.
+ * - required: An indicator for whether the associated form element is required.
+ *
+ * @see \Drupal\Core\Datetime\DatePreprocess::preprocessDatetimeWrapper()
+ *
+ * @ingroup themeable
+ */
+#}
+{% set title_classes = [
+  required ? 'js-form-required',
+  required ? 'form-required',
+] %}
+<div class="fr-container--fluid fr-my-3w">
+  <div class="fr-grid-row fr-grid-row--gutters">
+    {% if errors %}
+      <div class="fr-col-12">
+        {{ errors }}
+      </div>
+    {% endif %}
+    {% if title %}
+      <div class="fr-col-12 fr-col-sm-6 fr-col-md-4">
+        <span{{ title_attributes.addClass(title_classes) }}>{{ title }}</span>
+      </div>
+    {% endif %}
+    {{ content }}
+    {% if description %}
+      <div{{ description_attributes.addClass(['fr-col-12', 'fr-col-sm-6', 'fr-col-md-8']) }}>
+        {{ description }}
+      </div>
+    {% endif %}
+  </div>
+</div>

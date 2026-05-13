@@ -1,0 +1,33 @@
+{% set html_id = html_id|default('onecol--' ~ random()) %}
+{% set attributes = attributes|default(create_attribute({class: ['fr-container'], id: html_id})) %}
+{% set attributes_grid = attributes_grid|default(create_attribute({class: ['fr-grid-row']})) %}
+
+{% if fluid %}
+  {% set attributes = attributes.addClass('fr-container--fluid') %}
+{% endif %}
+
+{% if gutters %}
+  {% set attributes_grid = attributes_grid.addClass('fr-grid-row--gutters') %}
+{% endif %}
+{% if align %}
+  {% set attributes_grid = attributes_grid.addClass(align) %}
+{% endif %}
+{% if valign %}
+  {% set attributes_grid = attributes_grid.addClass(valign) %}
+{% endif %}
+
+{% if content %}
+<div{{ attributes }}>
+  <div{{ attributes_grid }}>
+    <div class="fr-col-12">
+      {% if region_attributes.content is defined %}
+      	<div{{ region_attributes.content.addClass('layout__region', 'layout__region--content') }}>
+      {% endif %}
+      {{ content }}
+      {% if region_attributes.content is defined %}
+      	</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

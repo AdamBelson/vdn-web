@@ -1,0 +1,56 @@
+name: DSFR - Button
+description: DSFR Button component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    type:
+      type: string
+      title: Type
+      default: button
+      enum:
+        - button
+        - reset
+        - submit
+    classes:
+      type: array
+      title: 'Additionnal CSS classes'
+      default: []
+    title:
+      type: string
+      title: Title attribute
+    icon:
+      type: object
+      title: 'Icon properties'
+      properties:
+        icon:
+          type: string
+          title: Icon CSS class
+          description: 'See icon list https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux/icone'
+        position:
+          type: string
+          title: Icon position
+          default: 'default'
+          description: 'Default mean icon only.'
+          enum:
+            - 'left'
+            - 'right'
+            - 'default'
+    aria_expanded:
+      type: boolean
+      title: 'Aria expanded'
+    aria_controls:
+      type: string
+      title: 'Aria controls'
+    label:
+      type: string
+      title: Label
+    onclick:
+      type: string
+      title: 'Javascript onclick'
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.button

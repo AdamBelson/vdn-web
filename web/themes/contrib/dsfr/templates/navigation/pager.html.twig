@@ -1,0 +1,10 @@
+{% if items.pages %}
+  {{ include('dsfr:pagination', {
+    first: items.first ?? {},
+    previous: items.previous ?? {},
+    pages: items.pages,
+    next: items.next ?? {},
+    last: items.last ?? {},
+    current: current ?? 0,
+  }) }}
+{% endif %}

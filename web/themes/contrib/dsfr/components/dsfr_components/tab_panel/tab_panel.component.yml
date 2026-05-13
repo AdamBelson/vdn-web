@@ -1,0 +1,16 @@
+name: DSFR - Tab panel
+description: DSFR tab panel component
+status: experimental
+group: DSFR
+slots:
+  content:
+    title: Content
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+    selected:
+      type: boolean
+      title: "Selected"

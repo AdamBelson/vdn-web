@@ -1,0 +1,26 @@
+{% set html_id = html_id|default(random()) %}
+{% set attributes = create_attribute({
+  id: 'fr-tab--' ~ html_id,
+  class: ['fr-tabs__tab'],
+  tabindex: '-1',
+  'aria-selected': 'false',
+  'aria-controls': 'fr-tab--' ~ html_id ~ '--panel',
+  role: 'tab',
+}) %}
+
+{% if icon %}
+  {% set attributes = attributes.addClass(icon) %}
+{% endif %}
+{% if selected %}
+  {% set attributes = attributes.setAttribute('tabindex', '0').setAttribute('aria-selected', 'true').addClass('fr-tabs__tab--selected') %}
+{% endif %}
+
+{% if url and url != '' %}
+  <a{{ attributes.setAttribute('href', url) }}>
+    {{ label }}
+  </a>
+{% else %}
+  <button{{ attributes.setAttribute('type', 'button') }}>
+    {{ label }}
+  </button>
+{% endif %}

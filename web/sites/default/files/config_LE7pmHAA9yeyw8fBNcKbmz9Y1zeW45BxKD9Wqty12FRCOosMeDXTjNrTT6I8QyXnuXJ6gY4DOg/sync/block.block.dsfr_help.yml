@@ -1,0 +1,22 @@
+uuid: 837fefaa-726d-43c2-bf4c-d2e65df9420b
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - dsfr
+_core:
+  default_config_hash: NO0PDoJnXtq-VIPCWYL2ic-vOGRkSvxM8k9FE4ee81w
+id: dsfr_help
+theme: dsfr
+region: content
+weight: -3
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

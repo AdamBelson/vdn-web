@@ -1,0 +1,16 @@
+{% set html_id = html_id|default('fr-accordion--' ~ random()) %}
+{% set attributes_accordion_group = attributes_accordion_group|default(create_attribute({class: ['fr-accordions-group'], 'data-fr-group': 'true'})) %}
+{% set attributes_accordion = attributes_accordion|default(create_attribute({class: 'fr-accordion'})) %}
+{% set attributes_accordion_title = attributes_accordion|default(create_attribute({class: ['fr-accordion__title']})) %}
+{% set button_attributes = button_attributes|default(create_attribute({})) %}
+{% set items = items|default([]) %}
+
+<div{{ attributes_accordion_group }}>
+{% endif %}
+  {% for item in items %}
+    {{ include('dsfr:accordion', {
+      label: item.label,
+      content: item.content,
+    }, with_context: false) }}
+    {% endfor %}
+</div>

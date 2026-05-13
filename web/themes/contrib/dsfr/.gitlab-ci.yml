@@ -1,0 +1,62 @@
+
+include:
+  - project: $_GITLAB_TEMPLATES_REPO
+    ref: $_GITLAB_TEMPLATES_REF
+    file:
+      - '/includes/include.drupalci.main.yml'
+      - '/includes/include.drupalci.variables.yml'
+      - '/includes/include.drupalci.workflows.yml'
+
+variables:
+  PROJECT_NAME: 'dsfr'
+  PROJECT_TYPE: 'theme'
+  _PHPSTAN_BASELINE_FILENAME: '.phpstan.neon'
+  SKIP_CSPELL: 1
+  SKIP_ESLINT: 1
+  SKIP_PHPCS: 0
+  SKIP_PHPSTAN: 0
+  SKIP_STYLELINT: 0
+  _PHPUNIT_CONCURRENT: 1
+  OPT_IN_TEST_CURRENT: 1
+  OPT_IN_TEST_PREVIOUS_MAJOR: 1
+
+# D10 default is php 8.1.
+composer (previous major):
+  variables:
+    PHP_VERSION: 8.3
+
+phpunit (previous major):
+  variables:
+    PHP_VERSION: 8.3
+
+# Check the internal Composer end code. This is necessary in case allow_failure:true is set in the Composer job or one of its variants.
+.check-composer-end-code: &check-composer-end-code
+  - |
+    if [ "$COMPOSER_END_CODE" != "0" ]; then
+      printf "$DIVIDER\nCOMPOSER_END_CODE=$COMPOSER_END_CODE\nERROR: The pre-requisite Composer job did not complete successfully.\nCheck the log of that job for details.$DIVIDER\n"
+      exit 1;
+    fi;
+
+phpcs:
+  allow_failure: false
+
+phpstan:
+  allow_failure: false
+  script:
+    - cd $CI_PROJECT_DIR && pwd
+    - *check-composer-end-code
+    - php ./vendor/bin/phpstan analyze . --autoload-file="$CI_PROJECT_DIR/vendor/autoload.php" --no-progress --error-format=junit > $CI_PROJECT_DIR/junit.xml || true
+    - php ./vendor/bin/phpstan analyze . --autoload-file="$CI_PROJECT_DIR/vendor/autoload.php" --no-progress --error-format=gitlab > $CI_PROJECT_DIR/phpstan-quality-report.json || true
+    - sed -i "s#$CI_PROJECT_DIR/##g" junit.xml phpstan-quality-report.json
+    - exit $EXIT_CODE
+  artifacts:
+    paths:
+      - junit.xml
+      - phpstan-quality-report.json
+
+stylelint:
+  script:
+    - cd $CI_PROJECT_DIR && pwd
+    - npm install && npm run lint:css:gitlab
+  allow_failure: true
+

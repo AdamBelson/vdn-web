@@ -1,0 +1,18 @@
+includes:
+  - vendor/phpstan/phpstan/conf/bleedingEdge.neon
+parameters:
+  level: 1
+  fileExtensions:
+    - php
+    - module
+    - inc
+    - theme
+  paths:
+    - .
+  excludePaths:
+    - vendor
+    - tests
+    - node_modules (?)
+  ignoreErrors:
+    - '#Function base_path not found\.#'
+    - '#Function theme_get_setting not found\.#'

@@ -1,0 +1,37 @@
+name: DSFR - Sidemenu
+description: DSFR sidemenu component
+status: experimental
+group: DSFR
+variants:
+  sticky:
+    title: 'Sticky'
+  sticky-full-height:
+    title: 'Sticky full height'
+  right:
+    title: 'Right'
+  fr-sidemenu--sticky:
+    title: 'Sticky sidemenu'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    title:
+      type: string
+      title: Title
+    items:
+      type: array
+      title: Menu links
+      items:
+        type: object
+    sticky:
+      type: boolean
+      title: Sticky
+      default: false
+  required:
+    - items
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.sidemenu

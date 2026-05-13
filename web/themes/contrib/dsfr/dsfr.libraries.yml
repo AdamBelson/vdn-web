@@ -1,0 +1,590 @@
+full:
+  css:
+    theme:
+      /libraries/dsfr/dist/dsfr.css: {}
+      /libraries/dsfr/dist/utility/utility.css: {}
+  js:
+    /libraries/dsfr/dist/dsfr.module.js:
+      attributes:
+        type: module
+
+lib:
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.utility
+
+drupal:
+  css:
+    theme:
+      css/fix.css: {}
+
+drupal.comment:
+  css:
+    theme:
+      css/core/comment.css: {}
+
+drupal.dialog:
+  css:
+    theme:
+      css/core/dialog.css: {}
+
+drupal.vertical-tabs:
+  css:
+    theme:
+      css/core/vertical-tabs.css: {}
+
+drupal.layout_builder:
+  css:
+    theme:
+      css/core/layout_builder.css: {}
+
+drupal.layout_paragraphs:
+  css:
+    layout:
+      css/layout_paragraphs/builder.css: { weight: 200 }
+
+drupal.contextual:
+  css:
+    theme:
+      css/core/contextual.css: {}
+
+toolbar.toolbar:
+  css:
+    theme:
+      css/core/toolbar.css: {}
+
+settings:
+  css:
+    theme:
+      css/admin/settings.css: { }
+
+maintenance:
+  css:
+    theme:
+      /libraries/dsfr/dist/utility/utility.css: {}
+      css/core/maintenance.css: {}
+      css/core/maintenance_background.css: {}
+
+maintenance_background:
+  css:
+    theme:
+      css/core/maintenance_background.css: {}
+
+user:
+  css:
+    theme:
+      css/core/user.css: {}
+
+datetime:
+  css:
+    theme:
+      css/core/datetime.css: {}
+
+# -------------------------------------------------------------------------------------------- #
+# Modules (overrides)
+# -------------------------------------------------------------------------------------------- #
+
+simplenews:
+  css:
+    theme:
+      css/simplenews/simplenews.css: {}
+
+tacjs:
+  css:
+    theme:
+      css/tacjs/tacjs.css: {}
+  dependencies:
+    - dsfr/lib
+
+# -------------------------------------------------------------------------------------------- #
+# Specifics libraries
+# -------------------------------------------------------------------------------------------- #
+
+lib.core:
+  js:
+    /libraries/dsfr/dist/core/core.module.js:
+      attributes:
+        type: module
+      weight: -50
+  css:
+    component:
+      /libraries/dsfr/dist/core/core.css: {}
+
+# only used for FranceConnect/content media components.
+lib.main:
+  css:
+    component:
+      /libraries/dsfr/dist/dsfr/dsfr.main.css: {}
+
+lib.scheme:
+  js:
+    /libraries/dsfr/dist/scheme/scheme.module.js:
+      attributes:
+        type: module
+      weight: -50
+  css:
+    component:
+      /libraries/dsfr/dist/scheme/scheme.css: { }
+  dependencies:
+    - dsfr/lib.core
+
+lib.component:
+  js:
+    /libraries/dsfr/dist/component/component.module.js:
+      attributes:
+        type: module
+    component:
+      /libraries/dsfr/dist/component/component.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.scheme
+
+lib.accordion:
+  js:
+    /libraries/dsfr/dist/component/accordion/accordion.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/accordion/accordion.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.alert:
+  css:
+    component:
+      /libraries/dsfr/dist/component/alert/alert.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.badge:
+  css:
+    component:
+      /libraries/dsfr/dist/component/badge/badge.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.breadcrumb:
+  js:
+    /libraries/dsfr/dist/component/breadcrumb/breadcrumb.module.js:
+      attributes:
+        type: module
+      weight: -50
+  css:
+    component:
+      /libraries/dsfr/dist/component/breadcrumb/breadcrumb.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.button:
+  js:
+    /libraries/dsfr/dist/component/button/button.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/button/button.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.callout:
+  css:
+    component:
+      /libraries/dsfr/dist/component/callout/callout.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.card:
+  css:
+    component:
+      /libraries/dsfr/dist/component/card/card.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.checkbox:
+  css:
+    component:
+      /libraries/dsfr/dist/component/checkbox/checkbox.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.connect:
+  css:
+    component:
+      /libraries/dsfr/dist/component/connect/connect.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.consent:
+  css:
+    component:
+      /libraries/dsfr/dist/component/consent/consent.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.form
+    - dsfr/lib.button
+    - dsfr/lib.radio
+    - dsfr/lib.modal
+
+lib.content:
+  css:
+    component:
+      /libraries/dsfr/dist/component/content/content.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.display:
+  js:
+    /libraries/dsfr/dist/component/display/display.module.js:
+      attributes:
+        type: module
+      weight: -50
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+    - dsfr/lib.link
+    - dsfr/lib.radio
+    - dsfr/lib.button
+    - dsfr/lib.scheme
+    - dsfr/lib.modal
+
+lib.download:
+  css:
+    component:
+      /libraries/dsfr/dist/component/download/download.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.follow:
+  css:
+    component:
+      /libraries/dsfr/dist/component/follow/follow.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+    - dsfr/lib.link
+    - dsfr/lib.button
+    - dsfr/lib.input
+
+lib.footer:
+  css:
+    component:
+      /libraries/dsfr/dist/component/footer/footer.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.logo
+
+lib.form:
+  css:
+    component:
+      /libraries/dsfr/dist/component/form/form.css: { }
+  dependencies:
+    - dsfr/lib.core
+
+lib.header:
+  js:
+    /libraries/dsfr/dist/component/header/header.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/header/header.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.navigation
+    - dsfr/lib.link
+    - dsfr/lib.logo
+    - dsfr/lib.form
+    - dsfr/lib.button
+    - dsfr/lib.modal
+    - dsfr/lib.input
+    - dsfr/lib.search
+
+lib.highlight:
+  css:
+    component:
+      /libraries/dsfr/dist/component/highlight/highlight.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.input:
+  css:
+    component:
+      /libraries/dsfr/dist/component/input/input.css: { }
+  dependencies:
+    - dsfr/lib.form
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.link:
+  css:
+    component:
+      /libraries/dsfr/dist/component/link/link.css: { }
+  dependencies:
+    - dsfr/lib.core
+
+lib.logo:
+  css:
+    component:
+      /libraries/dsfr/dist/component/logo/logo.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.modal:
+  js:
+    /libraries/dsfr/dist/component/modal/modal.module.js:
+      attributes:
+        type: module
+      weight: -50
+  css:
+    component:
+      /libraries/dsfr/dist/component/modal/modal.css: { }
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.navigation:
+  js:
+    /libraries/dsfr/dist/component/navigation/navigation.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/navigation/navigation.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.notice:
+  css:
+    component:
+      /libraries/dsfr/dist/component/notice/notice.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.pagination:
+  css:
+    component:
+      /libraries/dsfr/dist/component/pagination/pagination.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.password:
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+    - dsfr/lib.link
+    - dsfr/lib.button
+    - dsfr/lib.input
+    - dsfr/lib.checkbox
+
+lib.quote:
+  css:
+    component:
+      /libraries/dsfr/dist/component/quote/quote.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.radio:
+  css:
+    component:
+      /libraries/dsfr/dist/component/radio/radio.css: { }
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.range:
+  css:
+    component:
+      /libraries/dsfr/dist/component/range/range.css: { }
+  js:
+    /libraries/dsfr/dist/component/range/range.module.js:
+      attributes:
+        type: module
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.search:
+  css:
+    component:
+      /libraries/dsfr/dist/component/search/search.css: { }
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+    - dsfr/lib.link
+    - dsfr/lib.button
+    - dsfr/lib.input
+
+lib.segmented:
+  js:
+    /libraries/dsfr/dist/component/segmented/segmented.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/segmented/segmented.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.select:
+  css:
+    component:
+      /libraries/dsfr/dist/component/select/select.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.share:
+  css:
+    component:
+      /libraries/dsfr/dist/component/share/share.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.sidemenu:
+  js:
+    /libraries/dsfr/dist/component/sidemenu/sidemenu.module.js:
+      attributes:
+        type: module
+      weight: -50
+  css:
+    component:
+      /libraries/dsfr/dist/component/sidemenu/sidemenu.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.skiplink:
+  css:
+    component:
+      /libraries/dsfr/dist/component/skiplink/skiplink.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.stepper:
+  css:
+    component:
+      /libraries/dsfr/dist/component/stepper/stepper.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.summary:
+  css:
+    component:
+      /libraries/dsfr/dist/component/summary/summary.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.tab:
+  js:
+    /libraries/dsfr/dist/component/tab/tab.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/tab/tab.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.table:
+  js:
+    /libraries/dsfr/dist/component/table/table.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/table/table.css: {}
+  dependencies:
+    - dsfr/lib.core
+
+lib.tag:
+  css:
+    component:
+      /libraries/dsfr/dist/component/tag/tag.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+
+lib.tile:
+  js:
+    /libraries/dsfr/dist/component/tile/tile.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/tile/tile.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.link
+    - dsfr/lib.button
+
+lib.toggle:
+  css:
+    component:
+      /libraries/dsfr/dist/component/toggle/toggle.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.tooltip:
+  css:
+    component:
+      /libraries/dsfr/dist/component/tooltip/tooltip.css: {}
+  js:
+    /libraries/dsfr/dist/component/tooltip/tooltip.module.js:
+      attributes:
+        type: module
+  dependencies:
+    - dsfr/lib.core
+
+lib.transcription:
+  js:
+    /libraries/dsfr/dist/component/transcription/transcription.module.js:
+      attributes:
+        type: module
+  css:
+    component:
+      /libraries/dsfr/dist/component/transcription/transcription.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.form
+
+lib.translate:
+  css:
+    component:
+      /libraries/dsfr/dist/component/translate/translate.css: {}
+  dependencies:
+    - dsfr/lib.core
+    - dsfr/lib.navigation
+
+lib.upload:
+  css:
+    component:
+      /libraries/dsfr/dist/component/upload/upload.css: {}
+  dependdencies:
+    - dsfr/lib.core
+
+lib.utility:
+  css:
+    component:
+      /libraries/dsfr/dist/utility/utility.css: {}
+  dependdencies:
+    - dsfr/lib.core

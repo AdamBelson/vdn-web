@@ -1,0 +1,78 @@
+name: DSFR - Pagination
+description: DSFR pagination component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    aria_label:
+      type: string
+      title: Label
+    current:
+      type: integer
+      title: 'Current page'
+    type:
+      type: string
+      title: 'Pager type'
+      enum:
+        - mini
+        - full
+    first:
+      type: object
+      title: 'First link'
+      properties:
+        title:
+          title: 'Title'
+          type: string
+        href:
+          title: 'Url'
+          type: string
+    previous:
+      type: object
+      title: 'First link'
+      properties:
+        title:
+          title: 'Title'
+          type: string
+        href:
+          title: 'Url'
+          type: string
+    pages:
+      type: array
+      items:
+        type: object
+        title: 'Link'
+        properties:
+          title:
+            title: 'Title'
+            type: string
+          href:
+            title: 'Url'
+            type: string
+    next:
+      type: object
+      title: 'First link'
+      properties:
+        title:
+          title: 'Title'
+          type: string
+        href:
+          title: 'Url'
+          type: string
+    last:
+      type: object
+      title: 'First link'
+      properties:
+        title:
+          title: 'Title'
+          type: string
+        href:
+          title: 'Url'
+          type: string
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.pagination

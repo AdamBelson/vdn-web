@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override for a 'textarea' #type form element.
+ *
+ * Available variables
+ * - wrapper_attributes: A list of HTML attributes for the wrapper element.
+ * - attributes: A list of HTML attributes for the <textarea> element.
+ * - resizable: An indicator for whether the textarea is resizable.
+ * - required: An indicator for whether the textarea is required.
+ * - value: The textarea content.
+ *
+ * @see template_preprocess_textarea()
+ */
+#}
+<div{{ wrapper_attributes.addClass('fr-textarea-drupal') }}>
+  {% if theme.code.w3c != 1 %}
+    <textarea{{ attributes.addClass('fr-input') }}>{{ value }}</textarea>
+  {% else %}
+    <textarea{{ attributes.removeAttribute('aria-required').addClass('fr-input') }}>{{ value }}</textarea>
+  {% endif %}
+</div>

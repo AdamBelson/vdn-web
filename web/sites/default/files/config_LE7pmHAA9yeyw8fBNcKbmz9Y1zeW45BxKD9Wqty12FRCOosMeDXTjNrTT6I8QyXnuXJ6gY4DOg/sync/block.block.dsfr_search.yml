@@ -1,0 +1,23 @@
+uuid: e3d12e85-7354-409e-bd1c-618834e7e368
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - dsfr
+_core:
+  default_config_hash: IVxj_gv_Nvu8pVU7R2N8ZVmrMCI50qDtP8yHN36Xgxo
+id: dsfr_search
+theme: dsfr
+region: header_search
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

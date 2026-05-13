@@ -1,0 +1,37 @@
+{% set attributes = create_attribute({class: 'fr-notice'}) %}
+{% if html_id %}
+  {% set attributes = attributes.setAttribute('id', html_id) %}
+{% endif %}
+
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass('fr-notice--' ~ variant) %}
+{% endif %}
+
+<div{{ attributes }}>
+  <div class="fr-container">
+    <div class="fr-notice__body">
+      <div>
+        {% if title %}
+          {% set attributes_title = create_attribute({class: 'fr-notice__title'}) %}
+          {% if icon %}
+            {% set attributes_title = attributes_title.addClass(icon) %}
+          {% endif %}
+          <div{{ attributes_title }}>{{ title }}</div>
+        {% endif %}
+        {% if description %}
+          <div class="fr-notice__desc">{{ description }}</div>
+        {% endif %}
+        {% if link %}
+          {{ link }}
+        {% endif %}
+      </div>
+      {{ include('dsfr:button', {
+        type: 'button',
+        classes: ['fr-btn--close', 'fr-btn'],
+        title: 'Hide'|t,
+        onclick: 'const notice = this.parentNode.parentNode.parentNode; notice.parentNode.removeChild(notice)',
+        label: 'Hide'|t,
+      }, with_context: false) }}
+    </div>
+  </div>
+</div>

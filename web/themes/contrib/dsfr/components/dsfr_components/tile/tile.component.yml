@@ -1,0 +1,70 @@
+name: DSFR - Tile
+description: DSFR tilecomponent
+status: experimental
+group: DSFR
+variants:
+  default:
+    title: 'Vertical'
+  horizontal:
+    title: 'Horizontal'
+  sm:
+    title: 'Vertical small'
+  horizontal__sm:
+    title: 'Horizontal small'
+slots:
+  image:
+    title: 'Image'
+  tags:
+    title: 'Tags'
+  description:
+    title: 'Description'
+  detail:
+    title: 'Detail'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+    title:
+      type: string
+      title: "Title"
+    url:
+      type: string
+      title: "URL"
+    enlarge_link:
+      type: boolean
+      title: "Enlarge link"
+    title_tag:
+      type: string
+      title: "HTML title tag"
+      default: h3
+      enum:
+        - h2
+        - h3
+        - h4
+        - h5
+        - h6
+    background:
+      type: string
+      title: "Background color"
+      enum:
+        - default
+        - grey
+    has_arrow:
+      type: boolean
+      title: "Has arrow icon"
+      default: true
+    has_border:
+      title: "Has border"
+      type: boolean
+      default: true
+    has_shadow:
+      title: "Has shadow"
+      type: boolean
+      default: false
+  required:
+    - title
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tile

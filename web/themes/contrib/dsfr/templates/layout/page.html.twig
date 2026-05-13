@@ -1,0 +1,54 @@
+{{ include('dsfr:header', {
+  primary_menu: page.primary_menu,
+  header_search: page.header_search,
+  header_menu: page.header_menu,
+  theme_settings: theme,
+  site_settings: site,
+}) }}
+
+{% if page.notice %}
+    {{ page.notice }}
+{% endif %}
+
+{% set attr_main = create_attribute({id: 'main', tabindex: -1}) %}
+{% if theme.code.w3c != 1 %}
+  {% set attr_main = attr_main.setAttribute('role', 'main') %}
+{% endif %}
+
+{% block main %}
+<main{{ attr_main }}>
+  {{ include('dsfr:main-content', {
+    hero: page.hero,
+    breadcrumb: page.breadcrumb,
+    sidebar_first: page.sidebar_first,
+    tabs: page.tabs,
+    highlighted: page.highlighted,
+    help: page.help,
+    content: page.content,
+    sidebar_second: page.sidebar_second,
+    theme_settings: theme,
+    attributes: null,
+  }, with_context: false) }}
+</main>
+{% endblock main %}
+
+{% block follow %}
+  {% if social or newsletter %}
+    {{ include('dsfr:follow', {
+      newsletter: page.follow.newsletter,
+      social: page.follow.social,
+    }) }}
+  {% endif %}
+{% endblock follow %}
+
+{% block footer %}
+  {% if theme.code.w3c != 1 %}
+    {% set attr_footer = attr_footer.setAttribute('role', 'contentinfo') %}
+  {% endif %}
+  {{ include('dsfr:footer', {
+    fluid: false,
+    footer: page.footer,
+    theme_settings: theme,
+    site_settings: site,
+  }) }}
+{% endblock %}

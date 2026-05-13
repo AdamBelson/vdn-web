@@ -1,0 +1,15 @@
+name: DSFR - Follow
+description: DSFR follow component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties: {}
+slots:
+  newsletter:
+    title: Newsletter section
+  social:
+    title: Social section
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.follow

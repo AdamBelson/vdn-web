@@ -1,0 +1,16 @@
+.contextual .trigger {
+  background-color: var(--background-default-grey);
+}
+.contextual-region .contextual .contextual-links {
+  background-color: var(--background-default-grey);
+}
+.contextual-region .contextual .contextual-links a,
+.contextual-region .contextual .contextual-links li {
+  color: var(--text-default-grey);
+  background-color: var(--background-default-grey);
+}
+.contextual-region .contextual .contextual-links li:hover,
+.contextual-region .contextual .contextual-links a:hover {
+  color: var(--text-default-grey);
+  background-color: var(--background-alt-grey);
+}

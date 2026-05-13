@@ -1,0 +1,28 @@
+{% set attributes = create_attribute({
+  id: html_id|default('fr-callout--' ~ random()),
+  class: ['fr-callout'],
+}) %}
+
+{% if icon %}
+  {% set attributes = attributes.addClass(icon) %}
+{% endif %}
+{% if color %}
+  {% set attributes = attributes.addClass('fr-callout--' ~ color) %}
+{% endif %}
+
+{% set title_tag = title_tag|default('h3') %}
+{% set description_tag = description_tag|default('div') %}
+
+<div{{ attributes }}>
+  {% if title %}
+  <{{ title_tag }} class="fr-callout__title">
+  {{ title }}
+</{{ title_tag }}>
+{% endif %}
+{% if description %}
+<{{ description_tag }} class="fr-callout__text">
+  {{ description }}
+</{{ description_tag }}>
+{% endif %}
+{{ button }}
+</div>

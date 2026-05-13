@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  vdn_site:
+    image: drupal:latest
+    links:
+      - vdn_data
+    ports:
+      - 8090:80
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+    volumes:
+      - ./web:/var/www/html
+  vdn_data:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: vdn_database
+      MYSQL_ROOT_PASSWORD: 
+    volumes:
+      - ~/docker/data/vdn_webdata:/var/lib/mysql:delegated
+    ports:
+      - 8091:3306
+  vdn_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: 
+      UPLOAD_LIMIT: 10G
+    links:
+      - "vdn_data:db"
+    ports:
+      - 8092:80

@@ -1,0 +1,32 @@
+/* stylelint-disable declaration-no-important */
+#toolbar-administration ul > li {
+  padding-bottom: 0 !important;
+}
+
+#toolbar-administration ul > li::before {
+  display: none !important;
+}
+
+#toolbar-administration ul > li a {
+  box-shadow: none !important;
+}
+
+#toolbar-administration [href] {
+  background-image: none !important;
+}
+
+.fr-header {
+  z-index: calc(var(--ground) + 300) !important;
+}
+
+.fr-header .fr-modal {
+  padding-top: 40px;
+}
+
+@media (min-width: 48rem) {
+  .fr-header .fr-modal {
+    padding-top: 0;
+  }
+}
+
+/* stylelint-enable declaration-no-important */

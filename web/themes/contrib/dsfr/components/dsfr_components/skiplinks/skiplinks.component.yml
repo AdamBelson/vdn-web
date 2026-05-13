@@ -1,0 +1,27 @@
+name: DSFR - Skiplinks
+description: Skip links allow users navigating with a keyboard, or equipped with screen readers, to access specific areas of the page more quickly.
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    skiplinks:
+      type: array
+      title: Skiplinks
+      items:
+        type: object
+        properties:
+          url:
+            type: string
+            title: Url
+          title:
+            type: string
+            title: Item title
+    label:
+      type: string
+      title: Skiplink label
+  required:
+    - skiplinks
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.skiplink

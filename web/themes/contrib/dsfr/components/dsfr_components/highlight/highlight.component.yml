@@ -1,0 +1,26 @@
+name: DSFR - Highlight
+description: DSFR highlight component
+status: experimental
+group: DSFR
+variants:
+  default:
+    title: 'Medium'
+  sm:
+    title: 'Small'
+  lg:
+    title: 'Large'
+slots:
+  description:
+    title: 'Description'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+    color:
+      type: string
+      title: "Color"
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.highlight

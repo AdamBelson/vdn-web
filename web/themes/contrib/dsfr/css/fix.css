@@ -1,0 +1,146 @@
+/* Fix the search form included in the Drupal pattern form */
+.fr-header .fr-search-bar .fr-btn {
+  /* max-width: 3rem; */
+  padding-left: 0.5rem;
+}
+
+/* Checkbox with our without label */
+.fr-checkbox-group {
+  display: flex;
+}
+
+/* Tabs tasks (active) */
+#block-dsfr-local-tasks {
+  overflow: inherit;
+}
+
+/* CKEditor (dialog) */
+.ck-body-wrapper {
+  position: absolute;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+}
+
+#header-tool__fr-theme-modal {
+  margin-bottom: 0;
+}
+
+/* Input file */
+.js-form-file.form-file {
+  position: absolute !important;
+  z-index: -1;
+  overflow: hidden !important;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0 !important;
+
+  & + label {
+    display: inline-flex;
+    flex-direction: row;
+    width: fit-content;
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--text-inverted-blue-france);
+    background-color: var(--background-action-high-blue-france);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5rem;
+  }
+
+  &:focus + label,
+  & + label:hover {
+    cursor: pointer;
+    background-color: var(--background-action-high-blue-france-hover);
+  }
+}
+
+.button {
+  --text-spacing: 0;
+  --title-spacing: 0;
+  --underline-img: none;
+  --hover-tint: var(--hover);
+  --idle: transparent;
+  --hover: var(--background-action-high-blue-france-hover);
+  --active: var(--background-action-high-blue-france-active);
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  min-height: 2.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--text-inverted-blue-france);
+  background-color: var(--background-action-high-blue-france);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+}
+
+.button--danger {
+  --hover: inherit;
+  --active: inherit;
+
+  color: #000091;
+  color: var(--text-action-high-blue-france);
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #000091;
+  box-shadow: inset 0 0 0 1px var(--border-action-high-blue-france);
+}
+
+.form-item .fr-vertical_tabs-group {
+  .vertical-tabs__menu .vertical-tabs__menu-item a {
+    background-image: none;
+  }
+  details {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode */
+[data-fr-theme="dark"] {
+  /* Editor */
+  .ck.ck-editor__main > .ck-editor__editable {
+    background-color: var(--background-contrast-grey) !important;
+  }
+
+  /* Widget */
+  .ui-widget-content {
+    background-color: var(--background-default-grey);
+
+    a {
+      color: var(--grey-50-1000);
+    }
+  }
+
+  /* If Gin toolbars */
+  .ui-dialog .ui-widget-content {
+    &.ui-dialog-content,
+    &.ui-dialog-buttonpane {
+      background: var(--background-default-grey) !important;
+    }
+  }
+
+  /* Icons */
+  svg rect {
+    fill: white;
+    stroke: white;
+  }
+
+  /* Footer tabs */
+  .fr-hint-text {
+    color: var(--blue-france-sun-113-625-active);
+  }
+
+  .vertical-tabs__menu .vertical-tabs__menu-item {
+    background-color: var(--grey-950-100);
+
+    &.is-selected {
+      background-color: var(--background-default-grey);
+
+      a strong {
+        color: var(--grey-50-1000);
+      }
+    }
+  }
+}

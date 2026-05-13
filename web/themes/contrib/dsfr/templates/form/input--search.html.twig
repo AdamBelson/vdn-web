@@ -1,0 +1,9 @@
+{% set label_search = theme.header.search.label == '' ? 'Search' : theme.header.search.label %}
+
+{{ include('dsfr:search', {
+  label: label_search,
+  children: children,
+  size: 'md',
+  attributes: create_attribute(),
+  attributes_input: attributes,
+}, with_context: false) }}

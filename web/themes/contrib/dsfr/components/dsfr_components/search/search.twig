@@ -1,0 +1,35 @@
+{% set html_id = html_id|default('fr-search-bar--' ~ random()) %}
+
+{% set attributes = create_attribute({
+  class: ['fr-search-bar'],
+  role: 'search',
+
+}) %}
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass('fr-search-bar--' ~ variant) %}
+{% endif %}
+
+{% set attributes_input = create_attribute({
+  id: (html_id ~ '--search-input'),
+  placeholder: placeholder|default(label),
+  title: label,
+  'data-drupal-selector': 'edit-keys',
+  type: 'search',
+  'aria-describedby': html_id ~ '--messages',
+  name: 'keys',
+  class: ['fr-input'],
+}) %}
+
+<div{{ attributes }}>
+  <label class="fr-label" for="search-input">
+    {{ label }}
+  </label>
+  <input{{ attributes_input }}>
+  <div class="fr-messages-group" id="{{ html_id }}--messages" aria-live="polite">
+    {{ children }}
+  </div>
+  {{ include('dsfr:button', {
+    type: 'submit',
+    label: label,
+  }, with_context: false) }}
+</div>

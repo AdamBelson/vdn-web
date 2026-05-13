@@ -1,0 +1,26 @@
+{
+  "name": "drupal/dsfr",
+  "type": "drupal-theme",
+  "description": "DSFR is a base theme for Drupal.",
+  "license": "GPL-2.0",
+  "require": {
+    "gouv/dsfr": "^1.13"
+  },
+  "repositories": {
+    "dsfr": {
+      "type": "package",
+      "package": {
+        "name": "gouv/dsfr",
+        "version": "1.14.3",
+        "type": "drupal-library",
+        "dist": {
+          "url": "https://github.com/GouvernementFR/dsfr/releases/download/v1.14.3/dsfr-v1.14.3.zip",
+          "type": "zip"
+        },
+        "require": {
+          "composer/installers": "~1.0 || ~2.0"
+        }
+      }
+    }
+  }
+}

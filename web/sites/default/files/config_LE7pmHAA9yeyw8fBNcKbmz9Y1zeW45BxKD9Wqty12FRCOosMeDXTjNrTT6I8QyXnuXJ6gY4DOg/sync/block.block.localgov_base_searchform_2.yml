@@ -1,0 +1,23 @@
+uuid: 49f42705-6ec1-4a87-bd6e-4100e9ede6aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - localgov_base
+_core:
+  default_config_hash: H4fy02EjLoQ5iUOTd1faLDGjDA-fRuHMMevrKnv9Pdo
+id: localgov_base_searchform_2
+theme: localgov_base
+region: tabs
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: 'Search form'
+  label_display: '0'
+  provider: search
+  page_id: null
+visibility: {  }

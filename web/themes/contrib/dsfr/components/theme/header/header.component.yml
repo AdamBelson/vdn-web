@@ -1,0 +1,33 @@
+name: DSFR - Header
+description: DSFR header component
+status: experimental
+group: DSFR Theme
+props:
+  type: object
+  properties:
+    attributes:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+    theme_settings:
+      type: object
+      title: Theme settings
+      additionalProperties: true
+    site_settings:
+      type: object
+      title: Site settings
+      additionalProperties: true
+  required:
+    - theme_settings
+    - site_settings
+slots:
+  header_brand:
+    title: Header brand
+  primary_menu:
+    title: Primary menu
+  header_search:
+    title: Header search
+  header_menu:
+    title: Header menu
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.header

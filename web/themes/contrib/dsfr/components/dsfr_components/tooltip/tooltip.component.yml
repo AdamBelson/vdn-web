@@ -1,0 +1,18 @@
+name: DSFR - Tooltip
+description: DSFR tooltip component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+  required:
+    - html_id
+slots:
+  description:
+    title: 'Description'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tooltip

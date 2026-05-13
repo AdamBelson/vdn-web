@@ -1,0 +1,96 @@
+:root {
+  --plus-icon: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M13 6V11H18V13H13V18H11V12.999L6 13V11L11 10.999V6H13Z' fill='%23000'/%3E%3C/svg%3E");
+  --up-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9 18L15 12L21 18H9Z' fill='%23000'/%3E%3C/svg%3E");
+  --down-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M21 12L15 18L9 12L21 12Z' fill='%23000000'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='12' height='6' fill='%23000' transform='translate(21 18) rotate(-180)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+  --edit-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.284 8.63082L19.6136 7.30121C20.0152 6.8996 20.6664 6.8996 21.068 7.30121L22.6988 8.93203C23.1004 9.33365 23.1004 9.98479 22.6988 10.3864L21.3692 11.716L18.284 8.63082Z' fill='%23000000'/%3E%3Cpath d='M17.2556 9.65922L9.0284 17.8864L8 22L12.1136 20.9716L20.3408 12.7444L17.2556 9.65922Z' fill='%23000000'/%3E%3C/svg%3E%0A");
+  --duplicate-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.7,8C21.4,8,22,8.6,22,9.3v7.9c0,0.7-0.6,1.3-1.3,1.3h-7.9c-0.7,0-1.3-0.6-1.3-1.3V9.3c0-0.7,0.6-1.3,1.3-1.3H20.7 M12.8,19.4c-1.2,0-2.2-1-2.2-2.2v-5.7H9.3c-0.7,0-1.3,0.6-1.3,1.3v7.9C8,21.4,8.6,22,9.3,22h7.9c0.7,0,1.3-0.6,1.3-1.3v-1.3H12.8z' fill='black' /%3E%3C/svg%3E%0A");
+  --delete-icon: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M14 8H16C16.5523 8 17 8.44772 17 9H21V11H9V9H13C13 8.44772 13.4477 8 14 8ZM10 12H20L19.09 21.0995C19.0389 21.6107 18.6088 22 18.095 22H11.905C11.3912 22 10.9611 21.6107 10.91 21.0995L10 12Z' fill='%23000000'/%3E%3C/svg%3E%0A");
+}
+
+.lp-builder {
+  width: 100%;
+  border: 0.5rem solid var(--background-alt-grey);
+  background-color: var(--background-default-grey);
+}
+.layout__region {
+  background-color: var(--background-alt-grey);
+}
+.lpb-controls,
+.lpb-controls.is-layout,
+a.lpb-enable-button {
+  color: var(--text-inverted-blue-france);
+  background-color: var(--background-active-blue-france);
+}
+.lpb-drag[href] {
+  color: var(--text-inverted-blue-france);
+  background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.5 11C13.3284 11 14 10.3284 14 9.5C14 8.67157 13.3284 8 12.5 8C11.6716 8 11 8.67157 11 9.5C11 10.3284 11.6716 11 12.5 11Z' fill='%23FFFFFF'/%3E%3Cpath d='M12.5 16C13.3284 16 14 15.3284 14 14.5C14 13.6716 13.3284 13 12.5 13C11.6716 13 11 13.6716 11 14.5C11 15.3284 11.6716 16 12.5 16Z' fill='%23FFFFFF'/%3E%3Cpath d='M14 19.5C14 20.3284 13.3284 21 12.5 21C11.6716 21 11 20.3284 11 19.5C11 18.6716 11.6716 18 12.5 18C13.3284 18 14 18.6716 14 19.5Z' fill='%23FFFFFF'/%3E%3Cpath d='M17.5 11C18.3284 11 19 10.3284 19 9.5C19 8.67157 18.3284 8 17.5 8C16.6716 8 16 8.67157 16 9.5C16 10.3284 16.6716 11 17.5 11Z' fill='%23FFFFFF'/%3E%3Cpath d='M19 14.5C19 15.3284 18.3284 16 17.5 16C16.6716 16 16 15.3284 16 14.5C16 13.6716 16.6716 13 17.5 13C18.3284 13 19 13.6716 19 14.5Z' fill='%23FFFFFF'/%3E%3Cpath d='M17.5 21C18.3284 21 19 20.3284 19 19.5C19 18.6716 18.3284 18 17.5 18C16.6716 18 16 18.6716 16 19.5C16 20.3284 16.6716 21 17.5 21Z' fill='%23FFFFFF'/%3E%3C/svg%3E%0A");
+}
+.lpb-btn,
+.lpb-btn--add {
+  color: var(--text-inverted-blue-france);
+  border: 2px solid var(--text-inverted-blue-france);
+  background-color: var(--background-active-blue-france);
+  box-shadow: none;
+}
+
+.lpb-up,
+.lpb-down,
+.lpb-edit,
+.lpb-duplicate,
+.lpb-delete,
+.lpb-up:hover,
+.lpb-down:hover,
+.lpb-edit:hover,
+.lpb-duplicate:hover,
+.lpb-delete:hover {
+  background-color: var(--text-inverted-blue-france) !important;
+  background-image: none;
+  -webkit-mask-composite: xor; /* old webkits */
+  mask-composite: intersect;
+  -webkit-mask-size:
+    contain,
+    100% 100%;
+  mask-size:
+    contain,
+    100% 100%;
+  -webkit-mask-position: center, center;
+  mask-position: center, center;
+  -webkit-mask-repeat: no-repeat, no-repeat;
+  mask-repeat: no-repeat, no-repeat;
+}
+.lpb-up {
+  -webkit-mask-image: var(--up-icon), linear-gradient(black, black);
+  mask-image: var(--up-icon), linear-gradient(black, black);
+}
+.lpb-down {
+  -webkit-mask-image: var(--down-icon), linear-gradient(black, black);
+  mask-image: var(--down-icon), linear-gradient(black, black);
+}
+.lpb-edit {
+  -webkit-mask-image: var(--edit-icon), linear-gradient(black, black);
+  mask-image: var(--edit-icon), linear-gradient(black, black);
+}
+.lpb-duplicate {
+  -webkit-mask-image: var(--duplicate-icon), linear-gradient(black, black);
+  mask-image: var(--duplicate-icon), linear-gradient(black, black);
+}
+.lpb-delete {
+  -webkit-mask-image: var(--delete-icon), linear-gradient(black, black);
+  mask-image: var(--delete-icon), linear-gradient(black, black);
+}
+
+.lpb-btn--add {
+  color: var(--background-active-blue-france);
+  border: 2px solid var(--background-active-blue-france);
+  background-color: var(--text-inverted-blue-france) !important;
+  -webkit-mask:
+    var(--plus-icon) center / contain no-repeat,
+    linear-gradient(#000, #000) center / 100% 100% no-repeat;
+  mask:
+    var(--plus-icon) center / contain no-repeat,
+    linear-gradient(#000, #000) center / 100% 100% no-repeat;
+}
+
+.lpb-btn:hover {
+  background-color: var(--background-active-blue-france) !important;
+}

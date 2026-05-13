@@ -1,0 +1,64 @@
+{% set html_id = html_id|default('fr-tile--' ~ random()) %}
+{% set attributes = create_attribute({
+  id: html_id,
+  class: ['fr-tile'],
+}) %}
+
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass(variant) %}
+{% endif %}
+{% if enlarge_link %}
+  {% set attributes = attributes.addClass('fr-enlarge-link') %}
+{% endif %}
+{% if has_shadow %}
+  {% set attributes = attributes.addClass('fr-tile--shadow') %}
+{% endif %}
+{% if not has_arrow %}
+  {% set attributes = attributes.addClass('fr-tile--no-icon') %}
+{% endif %}
+{% if not has_border %}
+  {% set attributes = attributes.addClass('fr-tile--no-border') %}
+{% endif %}
+{% if background and background != 'default' %}
+  {% set attributes = attributes.addClass('fr-tile--' ~ background) %}
+{% endif %}
+
+{% set title_tag = title_tag|default('h3') %}
+
+<div {{ attributes }}>
+  <div class="fr-tile__body">
+    <div class="fr-tile__content">
+      <{{ title_tag }} class="fr-tile__title">
+        {% if url %}
+        <a href="{{ url }}">
+        {% endif %}
+          {{ title }}
+        {% if url %}
+        </a>
+        {% endif %}
+      </{{ title_tag }}>
+      {% if description %}
+        <div class="fr-tile__desc">
+          {{ description }}
+        </div>
+      {% endif %}
+      {% if tags %}
+        <div class="fr-tile__start">
+          {{ tags }}
+        </div>
+      {% endif %}
+      {% if detail %}
+        <div class="fr-tile__detail">
+          {{ detail }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if image %}
+  <div class="fr-tile__header">
+    <div class="fr-tile__pictogram">
+      {{ image }}
+    </div>
+  </div>
+  {% endif %}
+</div>

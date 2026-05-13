@@ -1,0 +1,49 @@
+{% set html_id = html_id|default('fr-sidemenu--' ~ random()) %}
+
+{% set attributes = create_attribute({class: ['fr-sidemenu'], role: 'navigation', id: html_id}) %}
+
+{% set title = title|default('In this section'|t) %}
+{% set label_id = html_id ~ '--label' %}
+{% set attributes = attributes.setAttribute('aria-labelledby', label_id) %}
+{% if sticky %}
+    {% set attributes = attributes.addClass('fr-sidemenu--sticky') %}
+{% endif %}
+{% if variant is not empty %}
+    {% set attributes = attributes.addClass('fr-sidemenu--' ~ variant) %}
+{% endif %}
+
+<nav{{ attributes }}>
+    <div class="fr-sidemenu__inner">
+        <button class="fr-sidemenu__btn" aria-controls="fr-sidemenu-wrapper"
+                aria-expanded="false">{{ title }}</button>
+        <div class="fr-collapse" id="fr-sidemenu-wrapper">
+            <div class="fr-sidemenu__title" id="{{ label_id }}">{{ title }}</div>
+            {% if items %}
+                {{ _self.menu_links(items, 0) }}
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+{% macro menu_links(items, menu_level) %}
+  {% if items %}
+    <ul class="fr-sidemenu__list">
+    {% for item in items %}
+        <li{{ item.attributes.addClass('fr-sidemenu__item') }}>
+            {{ _self.menu_link(item) }}
+            {% if item.below %}
+                {{ _self.menu_links(item.below, menu_level + 1) }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}
+
+{% macro menu_link(item) %}
+    {% set link_attributes = item.attributes|default(create_attribute({class: ['fr-sidemenu__item']})) %}
+    {% if item.in_active_trail %}
+        {% set link_attributes = link_attributes.setAttribute('aria-current', item.below ? 'true' : 'page').addClass('fr-sidemenu__item--active') %}
+    {% endif %}
+    {{ link(item.title, item.url, link_attributes.addClass('fr-sidemenu__link')) }}
+{% endmacro %}

@@ -1,0 +1,16 @@
+{% set html_id = html_id|default('fr-highlight--' ~ random()) %}
+{% set attributes = create_attribute({class: ['fr-highlight'], id: html_id}) %}
+{% set description_attributes = create_attribute() %}
+{% if variant and variant != 'default' %}
+  {% set description_attributes = description_attributes.addClass('fr-description--' ~ variant) %}
+{% endif %}
+
+{% if color %}
+  {% set attributes = attributes.addClass('fr-highlight--' ~ color) %}
+{% endif %}
+
+{% if description %}
+  <div{{ attributes }}>
+    <div{{ description_attributes }}>{{ description }}</div>
+  </div>
+{% endif %}

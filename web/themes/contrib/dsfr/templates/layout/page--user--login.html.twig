@@ -1,0 +1,41 @@
+{% extends '@dsfr/layout/page.html.twig' %}
+
+{% block content_only %}
+
+  {{ attach_library('dsfr/user') }}
+
+  {% if site.maintenance %}
+    {{ attach_library('dsfr/maintenance_background') }}
+  {% endif %}
+
+  <div class="fr-grid-row fr-grid-row-gutters fr-grid-row--center fr-mb-md-14v">
+    <div class="fr-col-12 fr-col-md-12 fr-col-lg-12">
+      <div class="fr-container{# fr-background-alt--grey #} fr-px-md-0 fr-py-10v fr-py-md-14v">
+        <div class="fr-grid-row fr-grid-row-gutters fr-grid-row--center">
+          <div class="fr-col-12 fr-col-md-9 fr-col-lg-6">
+            <div>
+              {{ page.content }}
+            </div>
+            <p class="fr-mt-6v">
+                            <a href="{{ path('user.pass') }}" class="fr-link">{{ 'Reset your password'|t }}</a>
+                        </p>
+            {% if site.users.register != 'admin_only' %}
+            <div>
+                            <hr>
+                            <h2>{{ "You don't have an account?"|t }}</h2>
+                            <ul class="fr-btns-group">
+                                <li>
+                                    <a href="{{ path('user.register') }}" class="fr-btn fr-btn--secondary">
+                                        {{ 'Create new account '|t }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% set html_id = html_id|default('fourcol--' ~ random()) %}
+{% set attributes = attributes|default(create_attribute({class: ['fr-container'], id: html_id})) %}
+{% set attributes_grid = attributes_grid|default(create_attribute({class: ['fr-grid-row']})) %}
+{% if fluid %}
+  {% set attributes = attributes.addClass('fr-container--fluid') %}
+{% endif %}
+
+{% if gutters %}
+  {% set attributes_grid = attributes_grid.addClass('fr-grid-row--gutters') %}
+{% endif %}
+{% if align %}
+  {% set attributes_grid = attributes_grid.addClass(align) %}
+{% endif %}
+{% if valign %}
+  {% set attributes_grid = attributes_grid.addClass(valign) %}
+{% endif %}
+
+{% if first or second or third or fourth %}
+<div{{ attributes }}>
+  <div{{ attributes_grid }}>
+    <div class="fr-col-12 fr-col-md-3">
+      {% if region_attributes.first is defined %}
+        <div{{ region_attributes.first.addClass('layout__region', 'layout__region--first') }}>
+      {% endif %}
+      {{ first }}
+      {% if region_attributes.first is defined %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      {% if region_attributes.second is defined %}
+        <div{{ region_attributes.second.addClass('layout__region', 'layout__region--second') }}>
+      {% endif %}
+      {{ second }}
+      {% if region_attributes.second is defined %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      {% if region_attributes.third is defined %}
+      <div{{ region_attributes.third.addClass('layout__region', 'layout__region--third') }}>
+        {% endif %}
+      {{ third }}
+      {% if region_attributes.third is defined %}
+      	</div>
+      {% endif %}
+    </div>
+    <div class="fr-col-12 fr-col-md-3">
+      {% if region_attributes.fourth is defined %}
+        <div{{ region_attributes.fourth.addClass('layout__region', 'layout__region--fourth') }}>
+      {% endif %}
+      {{ fourth }}
+      {% if region_attributes.fourth is defined %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}

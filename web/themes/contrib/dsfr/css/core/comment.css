@@ -1,0 +1,6 @@
+form.comment-form {
+  .fr-fieldset {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}

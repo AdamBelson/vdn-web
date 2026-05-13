@@ -1,0 +1,44 @@
+{
+  "name": "drupal/dsfr",
+  "description": "DSFR is a base theme for Drupal.",
+  "type": "drupal-theme",
+  "keywords": [
+    "Drupal",
+    "Theme",
+    "DSFR"
+  ],
+  "homepage": "http://drupal.org/project/dsfr",
+  "license": "GPL-2.0",
+  "authors": [],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/openlayers6",
+    "source": "https://git.drupalcode.org/project/dsfr"
+  },
+  "require": {
+    "php": ">= 8.3",
+    "drupal/core": "^10.3 || ^11"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3",
+    "drupal/coder": "*",
+    "phpstan/phpstan": "*",
+    "vincentlanglet/twig-cs-fixer": "*",
+    "kanopi/drupal-sdc-validator": "^1.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "phpcs": "./vendor/bin/phpcs --standard=phpcs.xml.dist",
+    "phpcs:fix": "./vendor/bin/phpcbf --standard=phpcs.xml.dist",
+    "twigcs": "./vendor/bin/twig-cs-fixer lint ./",
+    "twigcs:fix": "./vendor/bin/twig-cs-fixer lint ./ --fix",
+    "phpstan": "./vendor/bin/phpstan analyse",
+    "phpstan-gitlab": "./vendor/bin/phpstan analyse --no-progress --error-format=gitlab > phpstan-quality-report.json",
+    "phpstan-junit": "./vendor/bin/phpstan analyse --no-progress --error-format=junit > junit.xml",
+    "sdccs:noenforce": "./vendor/bin/validate-sdc ./components",
+    "sdccs": "./vendor/bin/validate-sdc ./components"
+  }
+}

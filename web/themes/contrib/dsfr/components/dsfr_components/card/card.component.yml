@@ -1,0 +1,50 @@
+name: DSFR - Card
+description: DSFR card component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    enlarge_link:
+      type: boolean
+      title: 'Enlarge link'
+    title:
+      type: string
+      title: 'Card title'
+    href:
+      type: string
+      title: 'Link'
+    download:
+      type: boolean
+      title: 'Download'
+      default_value: false
+    detail_start:
+      type: string
+      title: 'Start detail'
+    detail_end:
+      type: string
+      title: 'End detail'
+    icon:
+      type: string
+      title: 'Custom icon'
+      description: 'See icon list https://www.systeme-de-design.gouv.fr/version-courante/fr/fondamentaux/icone'
+  required:
+    - title
+    - href
+slots:
+  description:
+    title: 'Description'
+  start:
+    title: 'Card start content'
+  link:
+    title: 'Use this link instead of title and href'
+  header:
+    title: 'Header'
+    description: 'If you want to insert some rich content at the beginning (i.e. tags, badge...)'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.card

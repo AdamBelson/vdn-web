@@ -1,0 +1,55 @@
+{% set html_id = html_id|default('fr-pagination--' ~ random()) %}
+{% set aria_label = aria_label|default('Pagination'|t) %}
+{% set attributes = create_attribute({class: 'fr-pagination', role: 'navigation', 'aria-labelledby': html_id ~ '--label', id: html_id}) %}
+{% set type = type|default('mini') %}
+
+{% if pages %}
+<nav{{ attributes }}>
+  <h4 id="{{ html_id ~ '--label' }}" class="visually-hidden sr-only">{{ aria_label }}</h4>
+  <ul{{ create_attribute({class: ['fr-pagination__list', 'pager__items', 'js-pager__items']}) }}>
+    {% if first %}
+      {{ _self.pager_link('First page'|t, first.href, 'fr-pagination__link--first') }}
+    {% endif %}
+    {% if previous %}
+      {{ _self.pager_link('Previous page'|t, previous.href, 'fr-pagination__link--prev') }}
+    {% endif %}
+
+    {% for key, item in pages %}
+      {% set is_current = (key == current) %}
+      {% if type != 'mini' or is_current %}
+        {% set markup_element = not (is_current) ? 'a' : 'span' %}
+        {% set li_attributes = create_attribute({class: ['pager__item']}) %}
+        {% if key == current %}
+          {% set li_attributes = li_attributes.addClass('is-active') %}
+        {% endif %}
+        {% set item_attributes = create_attribute(item.attributes|default({})) %}
+        {% set item_attributes = item_attributes.addClass('fr-pagination__link').setAttribute('title', 'Page @key'|t({'@key': key})) %}
+        {% set item_attributes = not (is_current) ? item_attributes.setAttribute('href', item.href) : item_attributes.setAttribute('aria-current', 'page') %}
+        <li{{ li_attributes }}>
+          <{{ markup_element }}{{ item_attributes }}>
+            {{ key }}
+          </{{ markup_element }}>
+        </li>
+      {% endif %}
+    {% endfor %}
+
+    {% if next %}
+      {{ _self.pager_link('Next page'|t, next.href, 'fr-pagination__link--next') }}
+    {% endif %}
+    {% if last %}
+      {{ _self.pager_link('Last page'|t, last.href, 'fr-pagination__link--last') }}
+    {% endif %}
+  </ul>
+</nav>
+{% endif %}
+
+{% macro pager_link(label, url, additionnal_class) %}
+  {% set markup_element = url ? 'a' : 'span' %}
+  {% set attributes = create_attribute().addClass(['fr-pagination__link', additionnal_class]).setAttribute('title', label) %}
+  {% set attributes = url ? attributes.setAttribute('href', url) : attributes.setAttribute('aria-disabled', 'true').setAttribute('role', 'link') %}
+  <li>
+    <{{ markup_element }}{{ attributes }}>
+      {{ label }}
+    </{{ markup_element }}>
+  </li>
+{% endmacro %}

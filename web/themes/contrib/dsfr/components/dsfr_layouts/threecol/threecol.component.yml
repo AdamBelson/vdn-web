@@ -1,0 +1,49 @@
+name: DSFR - Threecols
+description: DSFR/Drupal threecols component
+status: experimental
+group: DSFR - layouts
+variants:
+  25-50-25:
+    title: 25-50-25
+  50-25-25:
+    title: 50-25-25
+  25-25-50:
+    title: 25-25-50
+  33-33-33:
+    title: 33-33-33
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    fluid:
+      type: boolean
+      title: 'Fluid'
+    gutters:
+      type: boolean
+      title: 'Gutters'
+    align:
+      type: string
+      title: Horizontal align
+      enum:
+        - fr-grid-row--left
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+    valign:
+      type: string
+      title: Vertical align
+      enum:
+        - fr-grid-row--top
+        - fr-grid-row--bottom
+        - fr-grid-row--middle
+slots:
+  first:
+    title: First column
+  second:
+    title: Second column
+  third:
+    title: Third column
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.core

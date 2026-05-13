@@ -1,0 +1,30 @@
+name: DSFR - Search
+description: DSFR search component
+status: experimental
+group: DSFR
+variants:
+  md:
+    title: 'Medium'
+  lg:
+    title: 'Large'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+      description: 'Will be added as ID to the top level HTML element.'
+    label:
+      type: string
+      title: 'Search label'
+    placeholder:
+      type: string
+      title: 'Search placeholder'
+  required:
+    - label
+slots:
+  children:
+    title: 'Children (drupal thing)'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.search

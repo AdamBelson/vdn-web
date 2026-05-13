@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a four-column 25%-25%-25%-25% layout.
+ *
+ * Available variables:
+ * - content: The content for this layout.
+ * - attributes: HTML attributes for the layout <div>.
+ */
+#}
+
+{% set classes = [
+    'fr-grid-row',
+    'fr-grid-row--gutters',
+  ]
+%}
+{% set dsfr_col = 'fr-col-12 fr-col-lg-3' %}
+{% if content %}
+  {{ include('dsfr:threecol', {
+    first: content.first,
+    second: content.second,
+    third: content.third,
+    fourth: content.fourth,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

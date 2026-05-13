@@ -1,0 +1,38 @@
+name: DSFR - Alert
+description: DSFR alert component
+status: experimental
+group: DSFR
+variants:
+  error:
+    title: Error
+  success:
+    title: Success
+  status:
+    title: Status (success alias)
+  info:
+    title: Information
+  warning:
+    title: Warning
+  error--sm:
+    title: "Error small"
+  success--sm:
+    title: "Success small"
+  info--sm:
+    title: "Info small"
+  warning--sm:
+    title: "Warning small"
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    title:
+      type: string
+      title: 'Alert title'
+slots:
+  message:
+    title: message
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.alert

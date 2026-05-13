@@ -1,0 +1,35 @@
+{% if content %}
+  {{ include('dsfr:onecol', {
+    content: content.top,
+    fluid: false,
+    gutters: true,
+  }) }}
+
+  {{ include('dsfr:twocol', {
+    variant: '50-50',
+    first: content.first_above,
+    second: content.second_above,
+    fluid: false,
+    gutters: true,
+  }) }}
+
+  {{ include('dsfr:onecol', {
+    content: content.middle,
+    fluid: false,
+    gutters: true,
+  }) }}
+
+  {{ include('dsfr:twocol', {
+    variant: '50-50',
+    first: content.first_below,
+    second: content.second_below,
+    fluid: false,
+    gutters: true,
+  }) }}
+
+  {{ include('dsfr:onecol', {
+    content: content.bottom,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

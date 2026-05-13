@@ -1,0 +1,27 @@
+name: DSFR - Tab
+description: DSFR tab component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: "HTML id"
+    label:
+      type: string
+      title: "Label"
+    url:
+      type: string
+      title: "URL"
+    icon:
+      type: string
+      title: "Icon"
+    selected:
+      type: boolean
+      title: "Selected"
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tab

@@ -1,0 +1,80 @@
+name: 'DSFR'
+description: 'DSFR is a base theme for Drupal, which uses for the frontend the DSFR library (French State Design System).'
+type: theme
+base theme: false
+core_version_requirement: ^10 || ^11
+
+interface translation project: dsfr
+interface translation server pattern: themes/contrib/%project/translations/%project-%language.po
+
+libraries:
+  - dsfr/lib.core
+
+libraries-extend:
+  core/drupal.comment:
+    - dsfr/drupal.comment
+  core/drupal.dialog:
+    - dsfr/drupal.dialog
+  core/drupal.message:
+    - dsfr/lib.alert
+  core/drupal.vertical-tabs:
+    - dsfr/drupal.vertical-tabs
+  toolbar/toolbar:
+    - dsfr/toolbar.toolbar
+  tacjs/tarteaucitron.js:
+    - dsfr/tacjs
+  layout_builder/drupal.layout_builder:
+    - dsfr/drupal.layout_builder
+  layout_paragraphs/builder:
+    - dsfr/drupal.layout_paragraphs
+  contextual/drupal.contextual-links:
+    - dsfr/drupal.contextual
+  contextual/drupal.contextual-toolbar:
+    - dsfr/drupal.contextual
+
+libraries-override:
+  layout_discovery/onecol: false
+  layout_discovery/twocol_bricks: false
+  layout_discovery/twocol: false
+  layout_discovery/threecol_25_50_25: false
+  layout_discovery/threecol_33_34_33: false
+  layout_builder/twocol_section: false
+  layout_builder/threecol_section: false
+  layout_builder/fourcol_section: false
+  tacjs/tarteaucitron.js:
+    css:
+      theme:
+        /libraries/tarteaucitronjs/css/tarteaucitron.css: false
+        assets/vendor/tarteaucitron.js/css/tarteaucitron.css: false
+
+regions:
+  header_menu: 'Header Top menu (one line)'
+  header_search: 'Header Search'
+  primary_menu: 'Primary menu'
+  notice: 'Notice (important)'
+  breadcrumb: 'Breadcrumb'
+  sidebar_first: 'Sidebar First'
+  tabs: 'Tabs'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  sidebar_second: 'Sidebar Second'
+  follow_newsletter: 'Newsletter'
+  follow_social: 'Social menu'
+  footer_top_1: 'Footer Top 1'
+  footer_top_2: 'Footer Top 2'
+  footer_top_3: 'Footer Top 3'
+  footer_top_4: 'Footer Top 4'
+  footer_top_5: 'Footer Top 5'
+  footer_top_6: 'Footer Top 6'
+  footer: 'Footer body (presentation text, etc.)'
+  footer_menu_first: 'Footer First menu (Official institutions)'
+  footer_partner: 'Footer Main partner'
+  footer_partners: 'Footer Partners'
+  footer_menu_last: 'Footer last menu'
+  footer_last: 'Footer last line (copyright, etc.)'
+
+# Information added by Drupal.org packaging script on 2026-02-26
+version: '3.0.6'
+project: 'dsfr'
+datestamp: 1772108858

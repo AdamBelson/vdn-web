@@ -1,0 +1,22 @@
+uuid: 1bf0f0fb-a886-40fc-93b7-17df256fbaf2
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - dsfr
+_core:
+  default_config_hash: NBkciv9zoituy7MLGgIMk5m-sHhu9_rx8J5FkJb7dIg
+id: dsfr_powered
+theme: dsfr
+region: footer_last
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  label_display: '0'
+  provider: system
+visibility: {  }

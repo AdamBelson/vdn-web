@@ -1,0 +1,22 @@
+uuid: bac48508-1e10-4023-9c43-904e5cd26624
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dsfr
+_core:
+  default_config_hash: YbDH_2TZJpClGkX06DZ9ZZ6gEiuuOMGG_B-aDFvnbPw
+id: dsfr_messages
+theme: dsfr
+region: content
+weight: -4
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

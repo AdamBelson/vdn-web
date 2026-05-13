@@ -1,0 +1,21 @@
+{% set html_id = html_id|default('fr-content-media--' ~ random()) %}
+{% set attributes = create_attribute({
+  class: ['fr-content-media'],
+  role: 'group',
+  'aria-label': label,
+  id: html_id,
+}) %}
+
+{% if variant and variant != 'default' %}
+  {% set attributes = attributes.addClass('fr-content-media--' ~ variant) %}
+{% endif %}
+
+<figure{{ attributes }}>
+  {{ media }}
+  {% if description or link %}
+  <figcaption class="fr-content-media__caption">
+    {{ description }}
+    <a href="{{ url }}" class="fr-link">{{ label }}</a>
+  </figcaption>
+  {% endif %}
+</figure>

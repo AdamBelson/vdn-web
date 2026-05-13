@@ -1,0 +1,7 @@
+.dsfr-simplenews form .form-item-message > .form-item-message {
+  display: none !important;
+}
+
+.dsfr-simplenews form fieldset {
+  display: flex;
+}

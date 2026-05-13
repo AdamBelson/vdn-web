@@ -1,0 +1,15 @@
+.fr-mega-menu__list.fr-multicolumn2 {
+  column-count: 2;
+}
+
+.fr-mega-menu__list.fr-multicolumn3 {
+  column-count: 3;
+}
+
+.fr-mega-menu__list.fr-multicolumn4 {
+  column-count: 4;
+}
+
+.fr-mega-menu__list.fr-multicolumn6 {
+  column-count: 6;
+}

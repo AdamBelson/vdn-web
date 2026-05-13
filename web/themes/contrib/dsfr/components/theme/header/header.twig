@@ -1,0 +1,67 @@
+
+<header role="banner" class="fr-header">
+  <div class="fr-header__body">
+    <div class="fr-container">
+      <div class="fr-header__body-row">
+        <div class="fr-header__brand fr-enlarge-link">
+          <div class="fr-header__brand-top">
+            <div class="fr-header__logo">
+              {{ include('dsfr:logo', {
+                label: theme_settings.general.institution,
+              }, with_context: false) }}
+            </div>
+            {% if theme_settings.general.version.only != 1 and theme_settings.header.logo.img != 1 and theme_settings.logo.path %}
+              <div class="fr-header__operator">
+                  <img src="{{ file_url(theme_settings.logo.path) }}" class="fr-responsive-img dsfr-drupal-logo" alt="{{ site_settings.site_name }} {{ site_settings.site_slogan }}" style="max-width:9.0625rem;" />
+              </div>
+            {% endif %}
+            <div class="fr-header__navbar">
+              <button data-fr-opened="false" aria-controls="modal-search" title="{{ 'Search'|t }}" type="button" id="button-search" class="fr-btn--search fr-btn">{{ 'Search'|t }}</button>
+              <button data-fr-opened="false" aria-controls="modal-nav" title="{{ 'Main menu'|t }}" type="button" id="button-menu" class="fr-btn--menu fr-btn">{{ 'Main menu'|t }}</button>
+            </div>
+          </div>
+          <div class="fr-header__service">
+            <a href="{{ url('<front>') }}" title="{{ site_settings.name }}">
+              <p class="fr-header__service-title">
+                {{ site_settings.name }}
+                {% if theme_settings.general.version.name %}
+                  {% set badge_attr = create_attribute({ class: ['fr-badge--' ~ theme_settings.general.version.color ] }) %}
+                  {{ include('dsfr:badge', {
+                    size: 'sm',
+                    html_tag: 'span',
+                    attributes: badge_attr,
+                    label: theme_settings.general.version.name,
+                    ellipsis: false,
+                  }, with_context: false) }}
+                {% endif %}
+              </p>
+            </a>
+            {% if site_settings.slogan %}
+            <p class="fr-header__service-tagline">{{ site_settings.slogan }}</p>
+            {% endif %}
+          </div>
+        </div>
+        <div class="fr-header__tools">
+          {% if header_menu %}
+          <div class="fr-header__tools-links">
+            {{ header_menu }}
+          </div>
+          {% endif %}
+          {% if header_search %}
+          <div class="fr-header__search fr-modal" id="modal-search" aria-labelledby="button-search">
+            {{ header_search }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fr-header__menu fr-modal" id="modal-nav" aria-labelledby="button-menu">
+    <div class="fr-container">
+      <button aria-controls="modal-nav" title="{{ 'Close'|t }}" type="button" class="fr-btn--close fr-btn">{{ 'Close'|t }}</button>
+      <div class="fr-header__menu-links">
+      </div>
+      {{ primary_menu }}
+    </div>
+  </div>
+</header>

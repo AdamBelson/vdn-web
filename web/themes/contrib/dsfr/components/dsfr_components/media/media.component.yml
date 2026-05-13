@@ -1,0 +1,35 @@
+name: DSFR - Media
+description: DSFR quote component
+status: experimental
+group: DSFR
+variants:
+  default:
+    title: 'Default'
+  sm:
+    title: 'Small'
+  md:
+    title: 'Medium'
+  lg:
+    title: 'Large'
+props:
+  type: object
+  properties:
+    html_id:
+      type: string
+      title: 'HTML element ID'
+    label:
+      type: string
+      title: 'Label'
+    url:
+      type: string
+      title: 'Url'
+  required:
+    - label
+slots:
+  description:
+    title: 'Description'
+  media:
+    title: 'Media'
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.content

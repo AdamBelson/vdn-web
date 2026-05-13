@@ -1,0 +1,24 @@
+name: DSFR - Navigation
+description: DSFR navigation component
+status: experimental
+group: DSFR
+props:
+  type: object
+  properties:
+    is_megamenu:
+      type: boolean
+      title: Navigation is megamenu
+    max_items_in_lvl3_by_col:
+      type: integer
+      title: Max items in lvl3 by col
+    html_id:
+      type: string
+      title: HTML id
+    items:
+      type: array
+      title: Menu links
+      items:
+        type: object
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.navigation

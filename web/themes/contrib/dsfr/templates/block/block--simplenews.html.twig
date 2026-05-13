@@ -1,0 +1,17 @@
+{% block content %}
+  <div{{ attributes.addClass('fr-follow__newsletter', 'dsfr-simplenews') }}>
+    <div>
+      {{ title_prefix }}
+      {% if label %}
+        <h5{{ title_attributes.addClass('fr-h5', 'fr-follow__title') }}>{{ label|raw }}</h5>
+      {% endif %}
+      {% if content.message %}<p class="fr-text--sm fr-follow__desc">{{ content.message['#markup'] }}</p>{% endif %}
+    </div>
+    <div>
+      {{ content }}
+      <p id="fr-newsletter-hint-text" class="fr-hint-text">
+        {{ 'By entering your email address, you agree to receive our news by email. You can unsubscribe at any time using the unsubscribe links or by contacting us.'|t }}
+      </p>
+    </div>
+  </div>
+{% endblock %}

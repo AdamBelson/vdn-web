@@ -1,0 +1,27 @@
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {% if menu_level == 0 %}
+      {% set ul_attributes = attributes.addClass('fr-list') %}
+    {% else %}
+      {% set ul_attributes = create_attribute({class: 'fr-list'}) %}
+    {% endif %}
+    <ul{{ ul_attributes }}>
+    {% for item in items %}
+      <li{{ item.attributes }}>
+        {% if item.url %}
+          {{ link(item.title, item.url) }}
+        {% else %}
+          {{ item }}
+        {% endif %}
+        {% if item.below %}
+          {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+        {% endif %}
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

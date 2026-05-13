@@ -1,0 +1,10 @@
+{% set html_id = html_id|default('fr-logo--' ~ random()) %}
+{% set attributes = create_attribute({class: ['fr-logo']}).setAttribute('id', html_id) %}
+
+{% if size != 'default' %}
+  {% set attributes = attributes.addClass('fr-logo--' ~ size) %}
+{% endif %}
+
+<p{{ attributes }}>
+  {{ label|raw }}
+</p>

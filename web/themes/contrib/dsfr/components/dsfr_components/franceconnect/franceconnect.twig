@@ -1,0 +1,23 @@
+{% set html_id = html_id|default('fr-connect--' ~ random()) %}
+{% set attributes = create_attribute({class: ['fr-connect-group'], id: html_id}) %}
+
+{% set button_attributes = create_attribute({class: 'fr-connect'}) %}
+{% if html_tag == 'button' and not button_attributes.hasAttribute('type') %}
+  {% set button_attributes = button_attributes.setAttribute('type', 'submit') %}
+{% endif %}
+
+{% if plus %}
+  {% set button_attributes = button_attributes.addClass('fr-connect--plus') %}
+{% endif %}
+
+<div class="fr-connect-group">
+  <{{ html_tag }}{{ button_attributes }}>
+    <span class="fr-connect__login">{{ label }}</span>
+    <span class="fr-connect__brand">{{ brand }}</span>
+  </{{ html_tag }}>
+  {% if link %}
+  <div>
+    {{ link }}
+  </div>
+  {% endif %}
+</div>

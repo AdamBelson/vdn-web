@@ -1,0 +1,20 @@
+name: DSFR - Tabs
+description: DSFR tabs component
+status: experimental
+group: DSFR
+slots:
+  tabs:
+    title: "Tabs"
+  panels:
+    title: 'Panels'
+props:
+  type: object
+  properties:
+    label:
+      type: string
+      title: "Tabs title"
+  required:
+    - label
+libraryOverrides:
+  dependencies:
+    - dsfr/lib.tab

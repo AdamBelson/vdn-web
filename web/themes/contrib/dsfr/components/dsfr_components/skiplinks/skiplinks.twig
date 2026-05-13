@@ -1,0 +1,35 @@
+{% set attributes = create_attribute() %}
+{% set label = label|default('Quick access'|t) %}
+{% if skiplinks is empty %}
+  {% set skiplinks = [
+    {
+      title: 'Navigation'|t,
+      url: '#menu-main',
+    },
+    {
+      title: 'Main content'|t,
+      url: '#main-content',
+    },
+    {
+      title: 'Footer'|t,
+      url: '#footer',
+    },
+  ] %}
+{% endif %}
+{% if skiplinks|length > 1 %}
+<div{{ attributes.addClass('fr-skiplinks') }}>
+  <nav class="fr-container" role="navigation" aria-label="{{ label }}">
+    <ul class="fr-skiplinks__list">
+      {% for skiplink in skiplinks %}
+        <li>
+          {{ _self.menu_link(skiplink) }}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
+{% endif %}
+
+{% macro menu_link(skiplink) %}
+  <a href="{{ skiplink.url }}" class="fr-link">{{ skiplink.title }}</a>
+{% endmacro %}

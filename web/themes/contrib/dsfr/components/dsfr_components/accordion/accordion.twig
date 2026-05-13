@@ -1,0 +1,16 @@
+{% set html_id = html_id|default('fr-accordion--' ~ random()) %}
+{% set attributes = create_attribute({class: 'fr-accordion'}) %}
+
+<section{{ attributes }}>
+  <h3{{ create_attribute({class: ['fr-accordion__title']}) }}>
+    {{ include('dsfr:button', {
+      classes: ['fr-accordion__btn'],
+      aria_expanded: 'false',
+      aria_controls: html_id,
+      label: item.label,
+    }) }}
+  </h3>
+  <div id="{{ html_id }}" class="fr-collapse">
+    {{ content }}
+  </div>
+</section>

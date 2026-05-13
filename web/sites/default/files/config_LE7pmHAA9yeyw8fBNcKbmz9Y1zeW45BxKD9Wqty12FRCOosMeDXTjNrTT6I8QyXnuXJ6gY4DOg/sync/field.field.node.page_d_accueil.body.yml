@@ -1,0 +1,24 @@
+uuid: 957f1a6d-677a-4d99-8835-09f2cf058215
+langcode: fr
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.page_d_accueil
+  module:
+    - text
+id: node.page_d_accueil.body
+field_name: body
+entity_type: node
+bundle: page_d_accueil
+label: "Corps Page d'Accueil"
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

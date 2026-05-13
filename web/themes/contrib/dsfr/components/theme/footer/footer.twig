@@ -1,0 +1,73 @@
+{% set attributes = create_attribute({class: ['fr-footer']}) %}
+
+<footer{{ attributes }}>
+  <div class="fr-footer__top">
+    <div class="fr-container{% if fluid %} fr-container--fluid{% endif %}">
+      <div class="fr-grid-row fr-grid-row--start fr-grid-row--gutters">
+        {% set col_map = {
+          2: 'fr-col-md-6',
+          3: 'fr-col-md-4',
+          4: 'fr-col-md-3',
+          5: 'fr-col-md-3',
+          6: 'fr-col-sm-3 fr-col-md-2',
+        } %}
+        {% set footer_top_item_classes = col_map[footer.top|length] ?? '' %}
+        {% set footer_top_item_attributes = create_attribute({class: footer_top_item_classes}) %}
+        {% for item in footer.top %}
+        <div{{ footer_top_item_attributes }}>
+          {{ item }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="fr-container{% if fluid %} fr-container--fluid{% endif %}">
+    <div class="fr-footer__body">
+      <div class="fr-footer__brand fr-enlarge-link">
+        {{ include('dsfr:logo', {
+          label: theme.general.institution,
+        }, with_context: false) }}
+        {% if theme_settings.general.version.only != 1 and theme_settings.footer.logo.img != 1 and theme_settings.logo.path %}
+          <a title="Retour à l'accueil du site - {{ site_settings.site_name }} {{ site_settings.site_slogan }}" href="/" class="fr-footer__brand-link">
+            <img src="{{ file_url(theme_settings.logo.path) }}" class="fr-responsive-img dsfr-drupal-logo" alt="{{ site_settings.site_name }} {{ site_settings.site_slogan }}" style="max-width:9.0625rem;" >
+          </a>
+        {% endif %}
+      </div>
+      <div class="fr-footer__content">
+        <div class="fr-footer__content-desc">
+          {{ footer.content }}
+        </div>
+        {{ footer.menu_first }}
+      </div>
+    </div>
+    {% if footer.partner or footer.partners %}
+    <div class="fr-footer__partners">
+      <h2 class="fr-footer__partners-title">{{ 'Our partners'|t }}</h2>
+      <div class="fr-footer__partners-logos">
+        <div class="fr-footer__partners-main">
+          {{ footer.partner }}
+        </div>
+        <div class="fr-footer__partners-sub">
+          {{ footer.partners }}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <div class="fr-footer__bottom">
+      {% if footer.menu_last %}
+        {{ footer.menu_last }}
+      {% endif %}
+      {% if footer.last %}
+        {{ footer.last }}
+      {% endif %}
+      {% if theme.footer.last_line %}
+      <div class="fr-footer__bottom-copy">
+        <p>
+          {{ 'Unless otherwise stated, all texts on this site are under'|t }}
+          <a href="https://github.com/etalab/licence-ouverte/blob/master/LO.md" rel='noopener' target="_blank">{{ 'licence etalab-2.0'|t }}</a>
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>

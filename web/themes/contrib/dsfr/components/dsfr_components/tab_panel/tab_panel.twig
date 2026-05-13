@@ -1,0 +1,17 @@
+{% set html_id = html_id|default(random()) %}
+{% set tab_html_id = 'fr-tab--' ~ html_id %}
+
+{% set attributes = create_attribute({
+  class: ['fr-tabs__panel'],
+  role: 'tabpanel',
+  id: 'fr-tab--' ~ html_id ~ '--panel',
+  'aria-labelledby': tab_html_id,
+}) %}
+
+{% if selected %}
+  {% set attributes = attributes.setAttribute('tabindex', '0').addClass('fr-tabs__panel--selected') %}
+{% endif %}
+
+<div{{ attributes }}>
+  {{ content }}
+</div>

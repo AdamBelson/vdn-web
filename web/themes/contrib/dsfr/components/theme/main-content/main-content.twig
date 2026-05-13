@@ -1,0 +1,70 @@
+
+{% set widths = {center: {1: 12, 2: 8, 3: 6}, side: {1: 4, 2: 4, 3: 3}} %}
+{% set nb = 1 + (sidebar_first ? 1 : 0) + (sidebar_second ? 1 : 0) %}
+{% set col_center = widths.center[nb] ?? 12 %}
+{% set col_side = widths.side[nb] ?? 4 %}
+
+{% set attr_left = create_attribute({class: ['fr-col-12', 'fr-col-md-' ~ col_side, 'dsfr__sidebar_left']}) %}
+{% set attr_center = create_attribute({class: ['fr-col-12', 'fr-col-md-' ~ col_center, 'dsfr__main_content']}) %}
+{% set attr_right = create_attribute({class: ['fr-col-12', 'fr-col-md-' ~ col_side, 'dsfr__sidebar_right']}) %}
+{% set attr_content = create_attribute({
+  class: [
+    theme_settings.content.container,
+    'fr-pt-' ~ theme_settings.content.margin.top|number_format(0, '', '') ~ 'v',
+    'fr-pb-' ~ theme_settings.content.margin.bottom|number_format(0, '', '') ~ 'v',
+  ]})
+%}
+
+{% if hero %}
+  <div{{ create_attribute({class: [theme_settings.hero.container, 'fr-pt-' ~ theme_settings.hero.margin.top|number_format(0, '', '') ~ 'v', 'fr-pb-' ~ theme_settings.hero.margin.bottom|number_format(0, '', '') ~ 'v']}) }}>
+    <div class="fr-grid-row">
+      <div class="fr-col-12">
+        {{ hero }}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if breadcrumb %}
+  <div{{ create_attribute({class: [theme_settings.content.container, 'fr-pt-' ~ theme_settings.breadcrumb.margin.top|number_format(0, '', '') ~ 'v', 'fr-pb-' ~ theme_settings.breadcrumb.margin.bottom|number_format(0, '', '') ~ 'v']}) }}>
+    <div class="fr-grid-row">
+      <div class="fr-col-12">{{ breadcrumb }}</div>
+    </div>
+  </div>
+{% endif %}
+
+<div{{ create_attribute({class: [theme_settings.content.container, 'fr-pt-' ~ theme_settings.content.margin.top|number_format(0, '', '') ~ 'v', 'fr-pb-' ~ theme_settings.content.margin.bottom|number_format(0, '', '') ~ 'v']}) }}>
+<div class="fr-grid-row fr-grid-row--gutters dsfr-grid-no-outer">
+  {% if sidebar_first %}
+    <div{{ attr_left }}>
+      {{ sidebar_first }}
+    </div>
+  {% endif %}
+  <div{{ attr_center }}>
+    {% if tabs %}
+      {{ tabs }}
+    {% endif %}
+
+    {% if highlighted %}
+      <div>{{ highlighted }}</div>
+    {% endif %}
+
+    {% if help %}
+      <div>{{ help }}</div>
+    {% endif %}
+
+    <div {{ attr_content }}>
+      {{ content }}
+    </div>
+
+  </div>
+  {% if sidebar_second %}
+    <div{{ attr_right }}>
+      {{ sidebar_second }}
+    </div>
+  {% endif %}
+</div>
+</div>
+{% if theme_settings.header.settings.visible %}
+    {{ include('dsfr:display') }}
+{% endif %}

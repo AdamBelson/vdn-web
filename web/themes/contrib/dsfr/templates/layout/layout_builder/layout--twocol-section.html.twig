@@ -1,0 +1,22 @@
+{% set variant = '50-50' %}
+{% for class in attributes.getClass() %}
+  {% if '33-67' in class %}
+    {% set variant = '33-66' %}
+  {% elseif '67-33' in class %}
+    {% set variant = '66-33' %}
+  {% elseif '25-75' in class %}
+    {% set variant = '25-75' %}
+  {% elseif '75-25' in class %}
+    {% set variant = '75-25' %}
+  {% endif %}
+{% endfor %}
+
+{% if content %}
+  {{ include('dsfr:twocol', {
+    variant: variant,
+    first: content.first,
+    second: content.second,
+    fluid: false,
+    gutters: true,
+  }) }}
+{% endif %}

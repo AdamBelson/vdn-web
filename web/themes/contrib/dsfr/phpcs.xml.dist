@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="DrupalTheme">
+  <description>Configuration PHPCS pour un thème Drupal.</description>
+  <file>.</file>
+  <arg name="extensions" value="php,module,inc,install,test,profile,theme,info,txt,md,yml"/>
+  <config name="drupal_core_version" value="10"/>
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal"/>
+  <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice"/>
+  <!-- Incompatible SlevomatCS for now -->
+  <!--<rule ref="./vendor/slevomat/coding-standard/SlevomatCodingStandard"/>-->
+  <exclude-pattern>./vendor/*</exclude-pattern>
+  <exclude-pattern>./node_modules/*</exclude-pattern>
+  <exclude-pattern>./tests/*</exclude-pattern>
+  <exclude-pattern>./_dsfr_child/*</exclude-pattern>
+  <exclude-pattern>./dist/*</exclude-pattern>
+</ruleset>

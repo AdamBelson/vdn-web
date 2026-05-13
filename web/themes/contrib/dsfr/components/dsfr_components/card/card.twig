@@ -1,0 +1,55 @@
+{% set attributes = create_attribute({class: 'fr-card'}) %}
+{% if html_id %}
+  {% set attributes = attributes.setAttribute('id', html_id) %}
+{% endif %}
+
+{% set enlarge_link = enlarge_link|default(true) %}
+{% if enlarge_link %}
+  {% set attributes = attributes.addClass(['fr-enlarge-link']) %}
+{% endif %}
+
+{% if download %}
+  {% set attributes = attributes.addClass(['fr-card--download']) %}
+{% endif %}
+
+<div{{ attributes }}>
+  <div class="fr-card__body">
+    <div class="fr-card__content">
+      <h3 class="fr-card__title">
+        {% if link %}
+          {{ link }}
+        {% else %}
+          <a{% if download %} download{% endif %} href="{{ href }}">
+            {{ title }}
+          </a>
+        {% endif %}
+      </h3>
+      {% if description %}
+      <div class="fr-card__desc">
+        {{ description }}
+      </div>
+      {% endif %}
+      {% if start or detail_start %}
+      <div class="fr-card__start">
+        {{ start }}
+        <p class="fr-card__detail fr-icon-info-line">{{ detail_start }}</p>
+      </div>
+      {% endif %}
+      {% if detail_end %}
+      <div class="fr-card__end">
+        <p class="fr-card__detail">{{ detail_end }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if header or header_image %}
+  <div class="fr-card__header">
+    {{ header }}
+    {% if header_image %}
+    <div class="fr-card__img">
+      {{ header_image }}
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>

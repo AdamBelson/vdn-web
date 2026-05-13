@@ -1,0 +1,13 @@
+{% if tabs %}
+  <div{{ attributes.addClass('fr-tabs') }}>
+    <ul class="fr-tabs__list" role="tablist" aria-label="{{ label }}">
+      {% set tabs = tabs and tabs is not sequence ? [tabs] : tabs %}
+      {% for tab in tabs %}
+        <li role="presentation">
+          {{ tab }}
+        </li>
+      {% endfor %}
+    </ul>
+    {{ panels }}
+  </div>
+{% endif %}
